@@ -138,6 +138,7 @@ gulp.task('test', function(callback) {
    */
   
   // TODO
+  // runSequence('lint', 'mocha', callback);
   runSequence('mocha', callback);
 });
 
