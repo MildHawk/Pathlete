@@ -50,44 +50,22 @@ function Tool($rootScope) {
 Tool.$inject = ['$rootScope'];
 
 function Donation($http) {
-  var tokenId;
+  var sendToServer = function(token) {
+    return $http({
+      method: 'POST',
+      url: '/donations',
+      data: { test: 'test' },
+    })
+    .then(function (resp) {
+      return resp.data;
+    })
+    .catch(function() {
 
-  var configureStripe = function() {
-    //var handler = StripeCheckout.configure({
-      //this is the publishable key, which is meant just to generate the token that we will pass to the server
-      //key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
-      //image: '/square-image.png',
-      //token: function(token) {
-        //tokenId = token.id;
-      //}
-    //});
-  };
-
-  var makeDonation = function(name, description, amount) {
-    // Open Checkout with further options
-    //handler.open({
-      //name: name,
-      //description: description,
-      //amount: amount
-    //});
-
-    //return $http({
-      //method: 'POST',
-      //url: '/donations',
-      //data: { test: 'test' },
-    //})
-    //.then(function (resp) {
-      //return resp.data;
-    //})
-    //.catch(function() {
-
-    //})
-  };
+    });
+  }
 
   return {
-    makeDonation: makeDonation,
-    configureStripe: configureStripe,
-    tokenId: tokenId
+    sendToServer: sendToServer
   };
 }
 

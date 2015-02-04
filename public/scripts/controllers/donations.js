@@ -11,22 +11,14 @@
 
 
 function Donation($scope, $http, Donation) {
-	
-	//on ng-init, configure Stripe
-	$scope.configureStripe = function() {
-      Donation.configureStripe();
-      //bind tokenId to scope to insert it the hidden field
-      $scope.tokenId = Donation.tokenId;
-	};
-
-  $scope.donationPopup = function() {
-
+  $scope.stripeCallback = function (code, result) { 
+    if (result.error) { 
+      window.alert('it failed! error: ' + result.error.message); 
+    } else { 
+      window.alert('success! token: ' + result.id); 
+      Donation.prepareData(result.id)
+    } 
   };
-  //on ng-click, run sendDonation
-  $scope.sendDonation = function() {
-    Donation.makeDonation(name, description, amount);
-  };
-
 });
 
 Donations.$inject = ['$scope', '$http', 'Donation'];
