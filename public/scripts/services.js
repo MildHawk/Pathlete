@@ -98,4 +98,3 @@ angular
   .factory('Info', Info)
   .factory('Tool', Tool)
   .factory('Donation', Donation);
-})

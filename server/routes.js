@@ -28,20 +28,21 @@ router.get('/login', function (req, res, next){
 });
 
 passport.use(fitbitControl.fitbitStrategy);
-router.get('/auth/fitbit', passport.authenticate('fitbit', { failureRedirect: '/login' }), function (req,res) {
-});
+router.get('/auth/fitbit', 
+  passport.authenticate('fitbit', { failureRedirect: '/login' }),
+  function (req,res) {});
 
-
-router.get('/auth/fitbit/callback', passport.authenticate('fitbit', { failureRedirect: '/login' }), function (req,res) {
-  // console.log(res.session);
-  res.redirect('/progress');
-});
+router.get('/auth/fitbit/callback',
+  passport.authenticate('fitbit', { failureRedirect: '/login' }),
+  function (req,res) {
+    res.render('index');
+  });
 
 router.get('/userdata', function(req, res) {
   // console.log('req.user', req.user);
   dbHelper.getUserStats(req.user.id).once('value', function(data) {
-      res.send(data.val());
-    });
+    res.send(data.val());
+  });
 });
 
 router.post('/donations', function(req, res) {
@@ -52,6 +53,6 @@ router.post('/donations', function(req, res) {
   dbHelper.addDonation(token);
 });
 
-router.get('/donations');
+// router.get('/donations');
 
 module.exports = router;

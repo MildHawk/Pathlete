@@ -10,9 +10,7 @@ var passport = require('passport');
 var routes = require('./server/routes');
 var session = require('express-session');
 
-
 var app = express();
-var server = http.createServer(app);
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -26,7 +24,7 @@ app.set('view engine', 'ejs');
 
 app.use('/progress',express.static(__dirname + '/./public'));
 app.use('/achievements',express.static(__dirname + '/./public'));
-app.use(express.static(__dirname + '/./public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(session({
     secret: config.sessionSecret,
@@ -45,6 +43,8 @@ app.get('*', function(req, res, next) {
   res.render('index');
 });
 
-server.listen(config.port);
-console.log('Express listening on:', config.port);
+app.listen(config.port, function() {
+  console.log('Express listening on:', config.port);
+});
+
 module.exports = app;

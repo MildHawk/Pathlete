@@ -3,6 +3,10 @@
 function config($stateProvider, $locationProvider, $urlRouterProvider) {
 
   $stateProvider
+    // .state('user', {
+    //   templateUrl: '/users/'
+
+    // })
     .state('main', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl',
