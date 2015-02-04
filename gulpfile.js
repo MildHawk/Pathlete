@@ -135,9 +135,7 @@ gulp.task('test', function(callback) {
    * Use `runSequence` to call tasks synchronously, otherwise
    * messages from both will be potentially interleaved.
    */
-  // TODO add lint
-  // runSequence('lint', 'karma', 'mocha', callback);
-  runSequence('karma', 'mocha', callback);
+  runSequence('lint', 'karma', 'mocha', callback);
 });
 
 gulp.task('karma', function (done) {
