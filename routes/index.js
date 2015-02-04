@@ -36,6 +36,7 @@ router.get('/auth/fitbit/callback', passport.authenticate('fitbit', { failureRed
 });
 
 router.get('/userdata', function(req, res) {
+  console.log('/userdata req.user:', req.user);
   dbHelper.getUserStats(req.user.encodedId).once('value', function(data) {
       res.send(data.val());
     });
