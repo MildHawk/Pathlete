@@ -14,19 +14,18 @@
     <![endif]-->
 
     <div class="container">
-      <div class="header" ng-controller="ToolbarCtrl" ng-show="showing">
+      
+      <header class="header" ng-controller="ToolbarCtrl" ng-show="showing">
         <ul class="nav nav-pills pull-right">
           <li><a ng-href="/progress">Progress</a></li>
           <li><a ng-href="/achievements">Achievements</a></li>
           <li><a ng-href="/logout" target="_self">Logout</a></li>
         </ul>
         <h3 class="text-muted">pathlete</h3>
-      </div>
-      <div ng-view></div>
+      </header>
 
-      <div class="footer">
-        <p></p>
-      </div>
+      <main ui-view></main>
+
     </div>
 
     <!--[if lt IE 9]>
