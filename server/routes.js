@@ -45,4 +45,14 @@ router.get('/userdata', function(req, res) {
     });
 });
 
+router.post('/donations', function(req, res) {
+  // (Assuming you're using express - expressjs.com)
+  // Get the credit card details submitted by the form
+  var token = req.body.stripeToken;
+  var email = req.body.stripeEmail;
+  dbHelper.addDonation(token);
+});
+
+router.get('/donations');
+
 module.exports = router;
