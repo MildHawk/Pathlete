@@ -51,8 +51,8 @@ router.post('/donations', function(req, res) {
   var token = req.body.stripeToken;
   var email = req.body.stripeEmail;
   dbHelper.addDonation(token);
-})
+});
 
-router.get('/donations')
+router.get('/donations');
 
 module.exports = router;

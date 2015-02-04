@@ -87,9 +87,9 @@ function Donation($http) {
   return {
     makeDonation: makeDonation,
     configureStripe: configureStripe,
-    tokenId, tokenId
+    tokenId: tokenId
   };
-};
+}
 
 Donation.$inject = ['$http'];
 
@@ -98,5 +98,4 @@ angular
   .factory('Info', Info)
   .factory('Tool', Tool)
   .factory('Donation', Donation);
-  }
 })
