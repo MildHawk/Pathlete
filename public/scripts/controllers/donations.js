@@ -10,21 +10,21 @@
  */
 
 
-function Donation($scope, $http, Donation) {
+function DonationCtrl($scope, $http, Donation) {
   $scope.stripeCallback = function (code, result) { 
     if (result.error) { 
-      window.alert('it failed! error: ' + result.error.message); 
+      console.log('it failed! error: ' + result.error.message); 
     } else { 
-      window.alert('success! token: ' + result.id); 
-      Donation.sendToServer(result.id)
+      console.log('success! token: ' + result.id); 
+      Donation.sendToServer(result.id);
     } 
   };
-});
+}
 
-Donations.$inject = ['$scope', '$http', 'Donation'];
+DonationCtrl.$inject = ['$scope', '$http', 'Donation'];
 
 angular
-  .module('pathleteApp.Donation', [
+  .module('pathleteApp.DonationCtrl', [
     'pathleteApp.services'
   ])
-  .controller('Donation', Donation);
+  .controller('DonationCtrl', DonationCtrl);

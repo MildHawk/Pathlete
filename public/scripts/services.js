@@ -62,7 +62,7 @@ function Donation($http) {
     .catch(function() {
 
     });
-  }
+  };
 
   return {
     sendToServer: sendToServer
