@@ -76,7 +76,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
 
-  $window.Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+  window.Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 }
 
 config.$inject = ['$stateProvider', '$locationProvider','$urlRouterProvider'];

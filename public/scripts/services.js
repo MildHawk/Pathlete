@@ -54,7 +54,7 @@ function Donation($http) {
     return $http({
       method: 'POST',
       url: '/donations',
-      data: { test: 'test' },
+      data: { token: token },
     })
     .then(function (resp) {
       return resp.data;

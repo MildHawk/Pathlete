@@ -16,7 +16,7 @@ function Donation($scope, $http, Donation) {
       window.alert('it failed! error: ' + result.error.message); 
     } else { 
       window.alert('success! token: ' + result.id); 
-      Donation.prepareData(result.id)
+      Donation.sendToServer(result.id)
     } 
   };
 });
