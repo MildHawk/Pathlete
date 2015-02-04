@@ -1,6 +1,8 @@
 # Pathlete
 
-[![Stories in Ready](https://badge.waffle.io/MildHawk/Pathlete.png?label=ready&title=Ready)](https://waffle.io/MildHawk/Pathlete) [![Coverage Status](https://coveralls.io/repos/MildHawk/Pathlete/badge.svg)](https://coveralls.io/r/MildHawk/Pathlete)
+Issues: [![Stories in Ready](https://badge.waffle.io/MildHawk/Pathlete.png?label=ready&title=Ready)](https://waffle.io/MildHawk/Pathlete) 
+Build Status: [![Build Status](https://travis-ci.org/MildHawk/Pathlete.svg?branch=master)](https://travis-ci.org/MildHawk/Pathlete)
+Code Coverage (Master): [![Coverage Status](https://coveralls.io/repos/MildHawk/Pathlete/badge.svg?branch=master)](https://coveralls.io/r/MildHawk/Pathlete?branch=master)
 
 Pathlete is a fun data visualization tool that will show trends in your movement and motivate you to achieve large goals through small steps. It will show you how far you've traveled across different distances to give you new perspectives of your progress. 
 
