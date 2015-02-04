@@ -6,14 +6,21 @@ module.exports = {
     //Add the user's profile info to the db
     db.child('users').child(profile.id).once('value', function (data) {
       if (data.val() === null) {
+        console.log('token', token);
+        console.log('tokenSecret', tokenSecret);
+        console.log('profle', profile);
+        console.log('data', data);
         var user = {};
         user.id = profile.id;
         user.tokenSecret = tokenSecret;
         user.token = token;
-        user.name = profile._json.user.fullName;
+        // user.name = profile._json.user.fullName;
+        user.name = profile._json.user.displayName;
         user.strideRunning = profile._json.user.strideLengthRunning;
         user.strideWalking = profile._json.user.strideLengthWalking;
         user.units = profile._json.user.distanceUnit;
+        console.log('profile.id', profile.id);
+        console.log('user', user);
         //if user is not already in the db
         db.child('users').child(profile.id).set(user);
       } else {
