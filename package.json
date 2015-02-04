@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "Pathlete",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -33,7 +33,9 @@
     "gulp-uglify": "~1.0.2",
     "gulp-watch": "~3.0.0",
     "jshint-stylish": "~1.0.0",
+    "lodash": "^3.1.0",
     "morgan": "~1.5.1",
+    "nconf": "^0.7.1",
     "passport": "^0.2.1",
     "passport-fitbit": "^0.1.2",
     "run-sequence": "^1.0.2",
