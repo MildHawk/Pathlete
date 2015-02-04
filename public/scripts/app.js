@@ -72,6 +72,12 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
       templateUrl: '/views/achievements.html',
       controller: 'AchievementsCtrl',
       url: '/achievements'
+    })
+    // TODO: nest this into user view
+    .state('createChallenge', {
+      templateUrl: 'views/user/create-challenge-form.html',
+      controller: 'ChallengeFormCtrl',
+      url: '/create-challenge'
     });
 
   //$urlRouterProvider.otherwise('/');

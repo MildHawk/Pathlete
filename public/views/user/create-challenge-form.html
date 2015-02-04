@@ -1,0 +1,41 @@
+<div class="container">
+  <form ng-submit="ChallengeFormCtrl.handleSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Pick a Challenge</h1>
+        <div class="ach-list row">
+          <div ng-repeat='challenge in ChallengeFormCtrl.challenges' 
+            class="achievement col-xs-6 col-sm-3" style="{{challenge.image}}"
+            ng-click="ChallengeFormCtrl.selectChallenge()">
+            <h2>{{challenge.name}}</h2>
+            <p>{{challenge.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <h1>Pick a Charity</h1>
+      <select name="charity-selector" ng-model="charity">
+        <option value="nambla">NAMBLA</option>
+      </select>
+
+      <h1>Choose a Goal</h1>
+      <label for="fundraising-goal">Goal: $</label>
+      <input type="text" id="fundraising-goal" ng-model="goal">
+    </div>
+
+    <div class="row">
+      <h1>Motivation</h1>
+      <label for="motivation">Tell us why you're challenging yourself.</label>
+      <textarea id="motivation" ng-model="motivation"
+        ng-trim="true"></textarea>
+    </div>
+
+    <div class="row">
+      <button type="submit">SAVE</button>
+    </div>
+
+
+  </form>
+</div>
