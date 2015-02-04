@@ -62,6 +62,9 @@ var jsFilesForLint = [
   paths.spec + '/**/*.js'
 ];
 
+// Tracks if running from `gulp test`. If so, have JSHint error out.
+var runningTests = false;
+
 gulp.task('javascript', function() {
   gulp.src(jsFiles)
   .pipe(concat('app.min.js'))
@@ -76,11 +79,17 @@ gulp.task('javascript', function() {
  * Run JSHint
  */
 gulp.task('lint', function() {
-  return gulp.src(jsFilesForLint)
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish))
-    // Error out if any warnings appear
-    .pipe(jshint.reporter('fail'));
+  if (runningTests) {
+    return gulp.src(jsFilesForLint)
+      .pipe(jshint())
+      .pipe(jshint.reporter(stylish))
+      // Error out if any warnings appear
+      .pipe(jshint.reporter('fail'));
+  } else {
+    return gulp.src(jsFilesForLint)
+      .pipe(jshint())
+      .pipe(jshint.reporter(stylish))
+  }
 });
 
 gulp.task('moveViews', function() {
@@ -135,6 +144,7 @@ gulp.task('test', function(callback) {
    * Use `runSequence` to call tasks synchronously, otherwise
    * messages from both will be potentially interleaved.
    */
+  runningTests = true;
   runSequence('lint', 'karma', 'mocha', callback);
 });
 
