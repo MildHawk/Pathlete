@@ -62,6 +62,10 @@ var all = {
     consumerSecret: nconf.get('CONSUMER_SECRET')
   },
 
+  //Stripe API
+  stripe: {
+    apiKey: nconf.get('STRIPE_KEY')
+  }
   // // Social API keys
   // facebook: {
   //   clientID:     nconf.get('FACEBOOK_ID') || 'id',
