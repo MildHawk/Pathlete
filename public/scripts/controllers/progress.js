@@ -12,7 +12,6 @@ function ProgressCtrl($scope, $http, Info, Tool) {
     Info.getInfo()
       .then(function(user) {
         $scope.userInfo = user;
-        console.log(user);
         var farness = (user.stats.lifetime.total.distance / 150) * 700;
         if (farness > 700) {
           $scope.distance = 700;
