@@ -22,7 +22,6 @@ module.exports = {
          */
         user.name = profile._json.user.fullName || 
           profile._json.user.displayName || 'anonymous';
-        user.name = profile._json.user.displayName;
         user.strideRunning = profile._json.user.strideLengthRunning;
         user.strideWalking = profile._json.user.strideLengthWalking;
         user.units = profile._json.user.distanceUnit;
