@@ -72,6 +72,3 @@ Temporary Items
 
 ### Bower ###
 bower_components
-
-# .env with API keys
-.env
