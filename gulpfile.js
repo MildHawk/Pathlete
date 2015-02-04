@@ -57,10 +57,9 @@ var jsFiles = [
 
 // Keep track of own JS files for linting
 var jsFilesForLint = [
-  // TODO: set files for linting
-  // paths.src.js + '/**/*.js',
-  // paths.server + '/**/*.js',
-  // paths.spec + '/**/*.js'
+  paths.src.js + '/**/*.js',
+  paths.server + '/**/*.js',
+  paths.spec + '/**/*.js'
 ];
 
 gulp.task('javascript', function() {

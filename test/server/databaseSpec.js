@@ -1,3 +1,5 @@
+/*jshint -W079 */
+
 var expect = require('chai').expect;
 var db = require('../../utils/db.js');
 var helpers = require('../../utils/dbHelpers.js');
