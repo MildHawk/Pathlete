@@ -22,7 +22,7 @@ module.exports = exports = {
         }),
 
   getStats: function (userID, token, secret) {
-    var client = new FitbitApiClient(process.env.CONSUMER_KEY, process.env.CONSUMER_SECRET);
+    var client = new FitbitApiClient(config.fitbit.consumerKey, config.fitbit.consumerSecret);
     //creates the request to get activites json from fitbit
     return client.requestResource('/activities.json', 'GET', token, secret).then(function (data) {  
         //success handler for req, return the promise

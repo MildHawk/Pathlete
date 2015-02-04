@@ -7,11 +7,12 @@ var fitbitControl = require('../utils/fitbit.js');
 
 
 passport.serializeUser(function(user, done) {
-  // console.log('serializeUser', arguments);
+  console.log('serializeUser:', user);
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
+  console.log('deserializeUser:', obj);
   done(null, obj);
 });
 
@@ -35,6 +36,7 @@ router.get('/auth/fitbit/callback', passport.authenticate('fitbit', { failureRed
 });
 
 router.get('/userdata', function(req, res) {
+  console.log('req.user', req.user);
   dbHelper.getUserStats(req.user.encodedId).once('value', function(data) {
       res.send(data.val());
     });

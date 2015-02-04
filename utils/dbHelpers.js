@@ -2,6 +2,7 @@ var db = require('./db.js');
 
 module.exports = {
   addUser: function (token, tokenSecret, profile, done){
+    console.log('dbHelpers: profile:', profile);
     var err = '';
     //Add the user's profile info to the db
     db.child('users').child(profile.id).once('value', function (data) {
@@ -14,7 +15,13 @@ module.exports = {
         user.id = profile.id;
         user.tokenSecret = tokenSecret;
         user.token = token;
-        // user.name = profile._json.user.fullName;
+        /**
+         * use `fullName` if available. For new users, it may be undefined.
+         * The database will complain about this, so default to passing the
+         * `displayName`, or anonymous
+         */
+        user.name = profile._json.user.fullName || 
+          profile._json.user.displayName || 'anonymous';
         user.name = profile._json.user.displayName;
         user.strideRunning = profile._json.user.strideLengthRunning;
         user.strideWalking = profile._json.user.strideLengthWalking;
