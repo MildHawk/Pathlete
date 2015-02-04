@@ -36,7 +36,7 @@ module.exports = {
           // TODO handle error
           // return user DB model
           db.child('users').child(profile.id).once('value', function(data) {
-            console.log('db user from update:', data.val());
+            // console.log('db user from update:', data.val());
             done(data.val());
           });
         });
@@ -52,7 +52,15 @@ module.exports = {
   
   //add user activity, such as stairs and steps to their profile in the db
   addUserStats: function (userID, userStats) {
-    db.child('users').child(userID).child('stats').update(JSON.parse(userStats));
+    db.child('users').child(userID).child('stats')
+      .update(JSON.parse(userStats), function(err) {
+        // TODO: error handling
+        // TODO: maybe? Send back updated user db model
+        // db.child('users').child(userID).once('value', function(data) {
+        //   // console.log('db user from addUserStats:', data.val());
+        //   done(data.val());
+        // });
+      });
   },
 
   addDonation: function (token, email) {

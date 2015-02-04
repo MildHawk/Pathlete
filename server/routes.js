@@ -7,12 +7,15 @@ var fitbitControl = require('../utils/fitbit.js');
 
 
 passport.serializeUser(function(user, done) {
-  console.log('serializeUser:', user);
+  /**
+   * stores the user db model on `req.user`
+   */
+  // console.log('serializeUser:', user);
   done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
-  console.log('deserializeUser:', obj);
+  // console.log('deserializeUser:', obj);
   done(null, obj);
 });
 
@@ -31,13 +34,13 @@ router.get('/auth/fitbit', passport.authenticate('fitbit', { failureRedirect: '/
 
 
 router.get('/auth/fitbit/callback', passport.authenticate('fitbit', { failureRedirect: '/login' }), function (req,res) {
-  console.log(res.session);
+  // console.log(res.session);
   res.redirect('/progress');
 });
 
 router.get('/userdata', function(req, res) {
-  console.log('req.user', req.user);
-  dbHelper.getUserStats(req.user.encodedId).once('value', function(data) {
+  // console.log('req.user', req.user);
+  dbHelper.getUserStats(req.user.id).once('value', function(data) {
       res.send(data.val());
     });
 });
