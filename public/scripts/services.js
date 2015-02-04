@@ -53,23 +53,23 @@ function Donation($http) {
   var tokenId;
 
   var configureStripe = function() {
-    var handler = StripeCheckout.configure({
+    //var handler = StripeCheckout.configure({
       //this is the publishable key, which is meant just to generate the token that we will pass to the server
-      key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
-      image: '/square-image.png',
-      token: function(token) {
-        tokenId = token.id;
-      }
-    });
+      //key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+      //image: '/square-image.png',
+      //token: function(token) {
+        //tokenId = token.id;
+      //}
+    //});
   };
 
   var makeDonation = function(name, description, amount) {
     // Open Checkout with further options
-    handler.open({
-      name: name,
-      description: description,
-      amount: amount
-    });
+    //handler.open({
+      //name: name,
+      //description: description,
+      //amount: amount
+    //});
 
     //return $http({
       //method: 'POST',
