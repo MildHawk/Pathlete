@@ -22,8 +22,10 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
             _id: '1241421414124',
             username: 'RickWuebker',
             age: 36,
-            location: 'San Francisco',
-            state: 'CA',
+            location: {
+              city: 'San Francisco',
+              state: 'CA'
+            },
             totalSteps: 666,
             quote: '"I enjoy walking around my neighborhood at night!"',
             challenge: {
