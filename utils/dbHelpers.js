@@ -6,32 +6,40 @@ module.exports = {
     var err = '';
     //Add the user's profile info to the db
     db.child('users').child(profile.id).once('value', function (data) {
+      // collect necessary data
+      var user = {};
+      user.id = profile.id;
+      /**
+       * use `fullName` if available. For new users, it may be undefined.
+       * The database will complain about this, so default to passing the
+       * `displayName`, or anonymous
+       */
+      user.name = profile._json.user.fullName || 
+        profile._json.user.displayName || 'anonymous';
+      user.strideRunning = profile._json.user.strideLengthRunning;
+      user.strideWalking = profile._json.user.strideLengthWalking;
+      user.units = profile._json.user.distanceUnit;
+
+      //if user is not already in the db
       if (data.val() === null) {
-        console.log('token', token);
-        console.log('tokenSecret', tokenSecret);
-        console.log('profle', profile);
-        console.log('data', data);
-        var user = {};
-        user.id = profile.id;
         user.tokenSecret = tokenSecret;
         user.token = token;
-        /**
-         * use `fullName` if available. For new users, it may be undefined.
-         * The database will complain about this, so default to passing the
-         * `displayName`, or anonymous
-         */
-        user.name = profile._json.user.fullName || 
-          profile._json.user.displayName || 'anonymous';
-        user.strideRunning = profile._json.user.strideLengthRunning;
-        user.strideWalking = profile._json.user.strideLengthWalking;
-        user.units = profile._json.user.distanceUnit;
-        console.log('profile.id', profile.id);
-        console.log('user', user);
-        //if user is not already in the db
-        db.child('users').child(profile.id).set(user);
+        db.child('users').child(profile.id).set(user, function(err) {
+          // TODO handle error data
+          // return user DB model
+          done(user);
+        });
+     
+      //if user is already in db, update their profile info
       } else {
-        //if user is already in db, update their profile info
-        db.child('users').child(profile.id).update({tokenSecret: tokenSecret, token: token});
+        db.child('users').child(profile.id).update(user, function(err) {
+          // TODO handle error
+          // return user DB model
+          db.child('users').child(profile.id).once('value', function(data) {
+            console.log('db user from update:', data.val());
+            done(data.val());
+          });
+        });
       }
     });
   },
