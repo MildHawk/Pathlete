@@ -35,7 +35,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
       url: '/achievements'
     });
 
-  $urlRouterProvider.otherwise('/');
+  //$urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 }
