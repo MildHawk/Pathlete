@@ -44,7 +44,7 @@ var handleError = function(err) {
 // src files for server (used in code coverage)
 var serverFiles = [
   './app.js',
-  './routes/**/*.js',
+  './server/routes.js',
   './utils/**/*.js'
 ];
 
