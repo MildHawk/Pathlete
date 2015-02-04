@@ -56,15 +56,6 @@ var all = {
   // Should we populate the DB with sample data?
   seedDB: false,
 
-  // MongoDB connection options
-  // mongo: {
-  //   options: {
-  //     db: {
-  //       safe: true
-  //     }
-  //   }
-  // },
-
   // Fitbit API
   fitbit: {
     consumerKey: nconf.get('CONSUMER_KEY'),
