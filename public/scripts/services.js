@@ -49,7 +49,47 @@ function Tool($rootScope) {
 
 Tool.$inject = ['$rootScope'];
 
+function Donation($http) {
+  var tokenId;
+
+  var configureStripe = function() {
+    var handler = StripeCheckout.configure({
+      //this is the publishable key, which is meant just to generate the token that we will pass to the server
+      key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+      image: '/square-image.png',
+      token: function(token) {
+        tokenId = token.id;
+      }
+    });
+  };
+ 
+  var makeDonation = function(token, amount) {
+    return $http({
+      method: 'POST',
+      url: '/donations',
+      data: { test: 'test' },
+    })
+    .then(function (resp) {
+      return resp.data;
+    })
+    .catch(function() {
+
+    })
+  };
+
+  return {
+    makeDonation: makeDonation,
+    configureStripe: configureStripe,
+    tokenId, tokenId
+  };
+};
+
+Donation.$inject = ['$http'];
+
 angular
   .module('pathleteApp.services', [])
   .factory('Info', Info)
-  .factory('Tool', Tool);
+  .factory('Tool', Tool)
+  .factory('Donation', Donation);
+  }
+})
