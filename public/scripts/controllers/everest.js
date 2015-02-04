@@ -20,7 +20,6 @@ function EverestCtrl($scope, $http, Info, Tool) {
         } else {
           $scope.distance = farness;
         }
-        console.log($scope.userInfo);
       });
   };
 
