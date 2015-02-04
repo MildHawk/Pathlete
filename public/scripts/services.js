@@ -1,7 +1,4 @@
-angular.module('pathleteApp.services', [])
-
-.factory('Info', function ($http) {
-
+function Info($http) {
   // gets user's fitbit info in the form of an object  
   var getInfo = function() {
     return $http({
@@ -17,9 +14,11 @@ angular.module('pathleteApp.services', [])
     getInfo: getInfo
   };
 
-})
+}
 
-.factory('Tool', function($rootScope) {
+Info.$inject = ['$http'];
+
+function Tool($rootScope) {
   //sets default
   var toolbarShow = true;
 
@@ -45,4 +44,11 @@ angular.module('pathleteApp.services', [])
     toolbarOn: toolbarOn,
     toolbarOff: toolbarOff
   };
-});
+}
+
+Tool.$inject = ['$rootScope'];
+
+angular
+  .module('pathleteApp.services', [])
+  .factory('Info', Info)
+  .factory('Tool', Tool);

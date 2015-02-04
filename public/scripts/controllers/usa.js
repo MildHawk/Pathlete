@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UsaCtrl', function ($scope, $http, Info, Tool) {
+function UsaCtrl($scope, $http, Info, Tool) {
   //user info
   $scope.userInfo = undefined;
 
@@ -23,4 +23,12 @@ app.controller('UsaCtrl', function ($scope, $http, Info, Tool) {
   };
 
   $scope.getUserInfo();
-});
+}
+
+UsaCtrl.$inject = ['$scope', '$http', 'Info', 'Tool'];
+
+angular
+  .module('pathleteApp.UsaCtrl', [
+    'pathleteApp.services'
+  ])
+  .controller('UsaCtrl', UsaCtrl);

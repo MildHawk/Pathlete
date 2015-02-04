@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LutetiaCtrl', function ($scope, $http, Info, Tool) {
+function LutetiaCtrl($scope, $http, Info, Tool) {
   //user info
   $scope.userInfo = undefined;
 
@@ -24,4 +24,12 @@ app.controller('LutetiaCtrl', function ($scope, $http, Info, Tool) {
   };
   
   $scope.getUserInfo();
-});
+}
+
+LutetiaCtrl.$inject = ['$scope', '$http', 'Info', 'Tool'];
+
+angular
+  .module('pathleteApp.LutetiaCtrl', [
+    'pathleteApp.services'
+  ])
+  .controller('LutetiaCtrl', LutetiaCtrl);

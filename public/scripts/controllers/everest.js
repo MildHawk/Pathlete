@@ -1,6 +1,6 @@
 'use strict';
  
-app.controller('EverestCtrl', function ($scope, $http, Info, Tool) {
+function EverestCtrl($scope, $http, Info, Tool) {
   $scope.userInfo = undefined;
 
   //ensures toolbar at top is on
@@ -25,4 +25,12 @@ app.controller('EverestCtrl', function ($scope, $http, Info, Tool) {
   };
 
   $scope.getUserInfo();
-});
+}
+
+EverestCtrl.$inject = ['$scope', '$http', 'Info', 'Tool'];
+
+angular
+  .module('pathleteApp.EverestCtrl', [
+    'pathleteApp.services'
+  ])
+  .controller('EverestCtrl', EverestCtrl);

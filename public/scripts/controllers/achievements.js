@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
+function AchievementsCtrl($scope, $http, Info, Tool) {
   $scope.userInfo = undefined;
 
   Tool.toolbarOn();
@@ -81,6 +81,12 @@ app.controller('AchievementsCtrl', function ($scope, $http, Info, Tool) {
   };
 
   $scope.getUserInfo();
-});
+}
 
+AchievementsCtrl.$inject = ['$scope', '$http', 'Info', 'Tool'];
 
+angular
+  .module('pathleteApp.AchievementsCtrl', [
+    'pathleteApp.services'
+  ])
+  .controller('AchievementsCtrl', AchievementsCtrl);

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProgressCtrl', function ($scope, $http, Info, Tool) {
+function ProgressCtrl($scope, $http, Info, Tool) {
   //user info
   $scope.userInfo = undefined;
 
@@ -22,4 +22,12 @@ app.controller('ProgressCtrl', function ($scope, $http, Info, Tool) {
   };
   
   $scope.getUserInfo();
-});
+}
+
+ProgressCtrl.$inject = ['$scope', '$http', 'Info', 'Tool'];
+
+angular
+  .module('pathleteApp.ProgressCtrl', [
+    'pathleteApp.services'
+  ])
+  .controller('ProgressCtrl', ProgressCtrl);
