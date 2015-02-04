@@ -4,13 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "npm run build",
-    "build": "./node_modules/bower/bin/bower install && node node_modules/.bin/gulp build",
     "test": "gulp test"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
-    "bower": "^1.3.12",
     "cookie-parser": "~1.3.3",
     "dotenv": "^0.5.1",
     "express": "~4.11.1",
