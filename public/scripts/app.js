@@ -38,6 +38,8 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
   //$urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode({enabled: true, requireBase: false});
+
+  window.Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 }
 
 config.$inject = ['$stateProvider', '$locationProvider','$urlRouterProvider'];
