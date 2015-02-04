@@ -21,7 +21,7 @@ var paths = {
     js: './public/scripts',
     scss: './public/styles',
     img: './public/images',
-    views: './public/views'
+    views: './public/views',
   },
   dist: {
     js: './public/dist/js',
@@ -31,25 +31,28 @@ var paths = {
   },
   server: './server',
   spec: './test',
-  jade: './server/views/_partials',
   serverSpec: './test/server/**/*.js',
   karmaConf: __dirname + '/test/karma.conf.js'
 };
 
+// Log errors in gulp to the console
 var handleError = function(err) {
   console.log(err.toString());
   this.emit('end');
 };
 
+// src files for server (used in code coverage)
+var serverFiles = [
+  './app.js',
+  './routes/**/*.js',
+  './utils/**/*.js'
+];
+
+// JS files for deployment (stuff to be concat'ed, minified, etc.)
 var jsFiles = [
   paths.src.bower + '/angular/angular.js',
   paths.src.bower + '/angular-ui-router/release/angular-ui-router.js',
   paths.src.js + '/**/*.js'
-  // paths.src.js + '/app.js',
-  // paths.src.js + '/controllers/*.js',
-  // paths.src.js + '/directives/*.js',
-  // paths.src.js + '/services/*.js',
-  // './node_modules/angular-mocks/angular-mocks.js'  // TODO look into this
 ];
 
 // Keep track of own JS files for linting
@@ -58,24 +61,6 @@ var jsFilesForLint = [
   paths.server + '/**/*.js',
   paths.spec + '/**/*.js'
 ];
-
-// var jadeFiles = [paths.jade + '/*.jade'];
-
-/**
- * envConfig, envConfigDevelopment, and envConfigProduction are used to configure builds
- * with the proper environment. Arguments are passed into the preprocess
- * task to insert variables into files. For example, the base href needs
- * to be dynamically set based on the environment.
- */
-var envConfig;
-
-var envConfigDevelopment = {
-  BASE_HREF: 'localhost:3000'
-};
-
-var envConfigProduction = {
-  BASE_HREF: 'archivr-dev.herokuapp.com'
-};
 
 gulp.task('javascript', function() {
   gulp.src(jsFiles)
@@ -97,13 +82,6 @@ gulp.task('lint', function() {
     // Error out if any warnings appear
     .pipe(jshint.reporter('fail'));
 });
-
-// gulp.task('image', function() {
-//    gulp.src(paths.src.img + '/**/*')
-//     .pipe(image())
-//     .on('error', handleError)
-//     .pipe(gulp.dest(paths.dist.img));
-// });
 
 gulp.task('moveViews', function() {
   gulp.src(paths.src.views + '/**/*')
@@ -130,16 +108,36 @@ gulp.task('compass', function() {
 //     .pipe(gulp.dest(paths.jade + '/dist'));
 // });
 
+/******************************************************************************
+ * Environment configuration
+ *****************************************************************************/
+/**
+ * envConfig, envConfigDevelopment, and envConfigProduction are used to configure builds
+ * with the proper environment. Arguments are passed into the preprocess
+ * task to insert variables into files. For example, the base href needs
+ * to be dynamically set based on the environment.
+ */
+var envConfig;
+
+var envConfigDevelopment = {
+};
+
+var envConfigProduction = {
+};
+
+/******************************************************************************
+ * Testing suite
+ *****************************************************************************/
+
 // Run testing suite: lint, karma (client-side) and mocha (server-side)
 gulp.task('test', function(callback) {
   /**
    * Use `runSequence` to call tasks synchronously, otherwise
    * messages from both will be potentially interleaved.
    */
-  
-  // TODO
-  // runSequence('lint', 'mocha', callback);
-  runSequence('mocha', callback);
+  // TODO add lint
+  // runSequence('lint', 'karma', 'mocha', callback);
+  runSequence('karma', 'mocha', callback);
 });
 
 gulp.task('karma', function (done) {
@@ -167,7 +165,7 @@ var handleMochaError = function (err) {
 gulp.task('mocha', function (cb) {
   var mochaErr;
   // Track src files that should be covered
-  gulp.src(['./server/**/*.js'])
+  gulp.src(serverFiles)
     .pipe(istanbul({ includeUntested: true })) // Covering files
     .pipe(istanbul.hookRequire()) // Force `require` to return covered files
     .on('finish', function() {

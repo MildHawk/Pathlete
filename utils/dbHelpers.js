@@ -1,5 +1,4 @@
 var db = require('./db.js');
-var request = require('request');
 
 module.exports = {
   addUser: function (token, tokenSecret, profile, done){

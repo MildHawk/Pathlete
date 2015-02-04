@@ -1,5 +1,7 @@
 # Pathlete
 
+[![Coverage Status](https://coveralls.io/repos/MildHawk/Pathlete/badge.svg)](https://coveralls.io/r/MildHawk/Pathlete)
+
 Pathlete is a fun data visualization tool that will show trends in your movement and motivate you to achieve large goals through small steps. It will show you how far you've traveled across different distances to give you new perspectives of your progress. 
 
 ## Team
