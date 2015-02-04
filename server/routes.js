@@ -5,7 +5,6 @@ var passport = require('passport');
 var FitbitApiClient = require('fitbit-node');
 var fitbitControl = require('../utils/fitbit.js');
 
-
 passport.serializeUser(function(user, done) {
   // console.log('serializeUser', arguments);
   done(null, user);
