@@ -20,6 +20,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// set default server view directory and view engine
+app.set('views', __dirname + '/server/views');
+app.set('view engine', 'ejs');  
+
 app.use('/progress',express.static(__dirname + '/./public'));
 app.use('/achievements',express.static(__dirname + '/./public'));
 app.use(express.static(__dirname + '/./public'));
@@ -35,6 +39,11 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/auth/fitbit/callback', routes);
+
+// catch all other routes and redirect to index
+app.get('*', function(req, res, next) {
+  res.render('index');
+});
 
 server.listen(config.port);
 console.log('Express listening on:', config.port);
