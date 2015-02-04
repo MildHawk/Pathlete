@@ -6,7 +6,9 @@ function Info($http) {
       url: '/userdata'
     })
     .then(function (resp) {
+      console.log(resp.data);
       return resp.data;
+
     });
   };
 

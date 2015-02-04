@@ -1,37 +1,46 @@
 'use strict';
 
-function config($routeProvider, $locationProvider) {
+function config($stateProvider, $locationProvider, $urlRouterProvider) {
 
-  $routeProvider
-   .when('/', {
-    templateUrl: 'views/main.html',
-    controller: 'MainCtrl',
-  })
-   .when('/progress', {
-    templateUrl: 'views/progress.html',
-    controller: 'ProgressCtrl',
-  })
-    .when('/progress/everest', {
-     templateUrl: 'views/everest.html',
-     controller: 'EverestCtrl',
-   })
-   .when('/progress/lutetia', {
-    templateUrl: 'views/lutetia.html',
-    controller: 'LutetiaCtrl',
-  })
-    .when('/progress/usa', {
-    templateUrl: 'views/usa.html',
-    controller: 'UsaCtrl',
-  })
-   .when('/achievements', {
-    templateUrl: 'views/achievements.html',
-    controller: 'AchievementsCtrl',
-  });
+  $stateProvider
+    .state('main', {
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl',
+      controllerAs: 'MainCtrl',
+      url: '/'
+    })
+    .state('progress', {
+      templateUrl: 'views/progress.html',
+      controller: 'ProgressCtrl',
+      url: '/progress'
+    })
+    .state('everest', {
+       templateUrl: 'views/everest.html',
+       controller: 'EverestCtrl',
+       url: '/progress/everest'
+    })
+    .state('lutetia', {
+      templateUrl: 'views/lutetia.html',
+      controller: 'LutetiaCtrl',
+      url: '/progress/lutetia'
+    })
+    .state('usa', {
+      templateUrl: 'views/usa.html',
+      controller: 'UsaCtrl',
+      url: '/progress/usa'
+    })
+    .state('achievements', {
+      templateUrl: 'views/achievements.html',
+      controller: 'AchievementsCtrl',
+      url: '/achievements'
+    });
+
+  //$urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 }
 
-config.$inject = ['$routeProvider', '$locationProvider'];
+config.$inject = ['$stateProvider', '$locationProvider','$urlRouterProvider'];
 
 var app = angular
   .module('pathleteApp', [
@@ -43,6 +52,6 @@ var app = angular
     'pathleteApp.MainCtrl',
     'pathleteApp.ProgressCtrl',
     'pathleteApp.ToolbarCtrl',
-    'ngRoute'
+    'ui.router'
   ])
   .config(config);
