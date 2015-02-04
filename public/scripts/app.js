@@ -1,9 +1,7 @@
 'use strict';
 
-var app = angular
-  .module('pathleteApp', ['pathleteApp.services','ngRoute']);
-  
-app.config(function($routeProvider, $locationProvider) {
+function config($routeProvider, $locationProvider) {
+
   $routeProvider
    .when('/', {
     templateUrl: 'views/main.html',
@@ -31,4 +29,20 @@ app.config(function($routeProvider, $locationProvider) {
   });
 
   $locationProvider.html5Mode({enabled: true, requireBase: false});
-});
+}
+
+config.$inject = ['$routeProvider', '$locationProvider'];
+
+var app = angular
+  .module('pathleteApp', [
+    'pathleteApp.services',
+    'pathleteApp.AchievementsCtrl',
+    'pathleteApp.EverestCtrl',
+    'pathleteApp.LutetiaCtrl',
+    'pathleteApp.UsaCtrl',
+    'pathleteApp.MainCtrl',
+    'pathleteApp.ProgressCtrl',
+    'pathleteApp.ToolbarCtrl',
+    'ngRoute'
+  ])
+  .config(config);

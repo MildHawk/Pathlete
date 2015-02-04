@@ -3,8 +3,7 @@
 // Test specific configuration
 // ===========================
 module.exports = {
-  // MongoDB connection options
-  mongo: {
-    uri: 'mongodb://localhost/archivr-test'
+  firebase: {
+    uri: 'https://pathlete-dev.firebaseio.com/'
   }
 };
