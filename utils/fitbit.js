@@ -1,12 +1,13 @@
 var FitbitStrategy = require('passport-fitbit').Strategy;
 var FitbitApiClient = require('fitbit-node');
 var passport = require('passport');
-var dbHelper =require('./dbHelpers.js');
+var dbHelper = require('./dbHelpers.js');
+var config = require('../server/config/environment');
 
 module.exports = exports = {
   fitbitStrategy: new FitbitStrategy({
-      consumerKey: process.env.CONSUMER_KEY,
-      consumerSecret: process.env.CONSUMER_SECRET,
+      consumerKey: config.fitbit.consumerKey,
+      consumerSecret: config.fitbit.consumerSecret,
       callbackURL: '/auth/fitbit/callback',
       userAuthorizationURL: 'https://www.fitbit.com/oauth/authorize'
     }, function (token, tokenSecret, profile, done) {   

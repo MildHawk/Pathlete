@@ -65,6 +65,12 @@ var all = {
   //   }
   // },
 
+  // Fitbit API
+  fitbit: {
+    consumerKey: nconf.get('CONSUMER_KEY'),
+    consumerSecret: nconf.get('CONSUMER_SECRET')
+  },
+
   // // Social API keys
   // facebook: {
   //   clientID:     nconf.get('FACEBOOK_ID') || 'id',
@@ -87,8 +93,8 @@ var all = {
   // // JWT token
   // jwtTokenSecret: nconf.get('JWT_TOKEN_SECRET'),
 
-  // // Express session
-  // expressSessionSecret: nconf.get('EXPRESS_SESSION_SECRET')
+  // Express session
+  sessionSecret: nconf.get('SESSION_SECRET')
 
 };
 
