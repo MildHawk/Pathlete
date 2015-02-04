@@ -47,14 +47,9 @@ function Tool($rootScope) {
   };
 }
 
-<<<<<<< HEAD
 Tool.$inject = ['$rootScope'];
 
 function Donation($http) {
-=======
-.factory('Donation', function($http) {
-
->>>>>>> insert tokekId on view and configure strip on init
   var tokenId;
 
   var configureStripe = function() {
@@ -67,30 +62,32 @@ function Donation($http) {
       }
     });
   };
-<<<<<<< HEAD
- 
-=======
-  
->>>>>>> insert tokekId on view and configure strip on init
-  var makeDonation = function(token, amount) {
-    return $http({
-      method: 'POST',
-      url: '/donations',
-      data: { test: 'test' },
-    })
-    .then(function (resp) {
-      return resp.data;
-    })
-    .catch(function() {
 
-    })
+  var makeDonation = function(name, description, amount) {
+    // Open Checkout with further options
+    handler.open({
+      name: name,
+      description: description,
+      amount: amount
+    });
+
+    //return $http({
+      //method: 'POST',
+      //url: '/donations',
+      //data: { test: 'test' },
+    //})
+    //.then(function (resp) {
+      //return resp.data;
+    //})
+    //.catch(function() {
+
+    //})
   };
 
   return {
     makeDonation: makeDonation,
     configureStripe: configureStripe,
     tokenId, tokenId
-<<<<<<< HEAD
   };
 };
 
@@ -101,7 +98,5 @@ angular
   .factory('Info', Info)
   .factory('Tool', Tool)
   .factory('Donation', Donation);
-=======
->>>>>>> insert tokekId on view and configure strip on init
   }
 })
