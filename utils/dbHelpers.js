@@ -32,6 +32,26 @@ module.exports = {
   //add user activity, such as stairs and steps to their profile in the db
   addUserStats: function (userID, userStats) {
     db.child('users').child(userID).child('stats').update(JSON.parse(userStats));
+  },
+
+  addDonation: function (token, email) {
+    // Set your secret key: remember to change this to your live secret key in production
+    // See your keys here https://dashboard.stripe.com/account
+    var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+
+    var charge = stripe.charges.create({
+      amount: 1000, // amount in cents, again
+      currency: "usd",
+      card: token,
+      description: "payinguser@example.com"
+    }, function(err, charge) {
+      if (err && err.type === 'StripeCardError') {
+        // The card has been declined
+      }
+    });
+  },
+  getDonation: function() {
+
   }
 
 };
