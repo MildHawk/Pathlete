@@ -50,11 +50,24 @@ function Tool($rootScope) {
 Tool.$inject = ['$rootScope'];
 
 function Donation($http) {
-  var sendToServer = function(token) {
+
+  var donor = {};
+
+  var setDonor = function(name, amount) {
+    donor.name = name;
+    donor.amount = amount;
+  }
+
+  var getDonor = function() {
+    return donor;
+  }
+
+  var sendTokenToServer = function(token) {
+    console.log("donor-->", donor);
     return $http({
       method: 'POST',
       url: '/donations',
-      data: { stripeToken: token },
+      data: { stripeToken: token, name: donor.name, amount: donor.amount }
     })
     .then(function (resp) {
       return resp.data;
@@ -65,7 +78,9 @@ function Donation($http) {
   };
 
   return {
-    sendToServer: sendToServer
+    sendTokenToServer: sendTokenToServer,
+    setDonor: setDonor,
+    getDonor: getDonor
   };
 }
 

@@ -63,18 +63,21 @@ module.exports = {
       });
   },
 
-  addDonation: function (token, email) {
+  addDonation: function (token, name, amount) {
     // Set your secret key: remember to change this to your live secret key in production
     // See your keys here https://dashboard.stripe.com/account
     var stripe = require("stripe")(config.stripe.apiKey);
 
     var charge = stripe.charges.create({
-      amount: 1000, // amount in cents, again
+      amount: amount, // amount in cents, again
       currency: "usd",
       card: token,
-      description: "payinguser@example.com"
+      description: name
     }, function(err, charge) {
+      console.log("err in addDonation");
+      console.log("charge in addDonation");
       if (err && err.type === 'StripeCardError') {
+
         // The card has been declined
       }
     });
