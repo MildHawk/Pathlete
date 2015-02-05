@@ -85,12 +85,13 @@ module.exports = {
       cb(null, charge);
     });
   },
-  increaseAmount: function(userId, amount, cb) {
+  increaseAmount: function(userId, passedAmount, cb) {
     var newAmount = 0;
-    var amountRaised = db.child('users').child(userId).child('challenge').child('raised')
-    amountRaised.once('value', function(currentAmount) {
-      newAmount = currentAmount + amount;
-      amountRaised.update(newAmount, function(err) {
+    var challenge = db.child('users').child(userId).child('challenge')
+    challenge.child('raised').once('value', function(currentAmount) {
+      var currentAmountValue = currentAmount.val()
+      newAmount = currentAmountValue + passedAmount;
+      challenge.update({"raised": newAmount}, function(err) {
         if(err) return cb(err, null);
         cb(null, true);
       });
