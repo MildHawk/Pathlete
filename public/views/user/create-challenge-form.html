@@ -5,14 +5,18 @@
         <h1>Pick a Challenge</h1>
         <div class="ach-list row">
           <div ng-repeat='challenge in ChallengeFormCtrl.challenges' 
-            class="achievement col-xs-6 col-sm-3" style="{{challenge.image}}"
-            ng-click="ChallengeFormCtrl.selectChallenge()">
+            class="achievement col-xs-6 col-sm-3"
+            ng-class="{'selected' : ChallengeFormCtrl.isSelected($index)}"
+            style="{{challenge.image}}"
+            ng-click="ChallengeFormCtrl.selectChallenge($index)">
             <h2>{{challenge.name}}</h2>
             <p>{{challenge.description}}</p>
           </div>
         </div>
       </div>
     </div>
+
+
 
     <div class="row">
       <h1>Pick a Charity</h1>

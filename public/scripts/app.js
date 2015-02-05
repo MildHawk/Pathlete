@@ -76,7 +76,8 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
     // TODO: nest this into user view
     .state('createChallenge', {
       templateUrl: 'views/user/create-challenge-form.html',
-      // controller: 'ChallengeFormCtrl',
+      controller: 'ChallengeFormCtrl',
+      controllerAs: 'ChallengeFormCtrl',
       url: '/create-challenge'
     });
 
@@ -101,6 +102,7 @@ var app = angular
     'pathleteApp.ProgressCtrl',
     'pathleteApp.ToolbarCtrl',
     'pathleteApp.controllers.user',
+    'pathleteApp.ChallengeFormCtrl',
     'ui.router',
     'angularPayments'
   ])
