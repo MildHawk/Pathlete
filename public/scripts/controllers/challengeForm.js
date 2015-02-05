@@ -1,5 +1,7 @@
 
 function ChallengeFormCtrl($http, Challenges) {
+  var _this = this;
+
   // Challenges available to user
   this.challenges = Challenges.challenges;
 
@@ -18,12 +20,12 @@ function ChallengeFormCtrl($http, Challenges) {
   // Handle form submission
   this.handleSubmit = function() {
     // Add challenge selection to form
-    this.formInfo.selection = this.selection;
+    _this.formInfo.selection = _this.selection;
 
     // TODO: Validate some stuff
 
     // TODO: connect to server
-    console.log('Submitting form:', this.formInfo);
+    console.log('Submitting form:', _this.formInfo);
 
   };
 }
