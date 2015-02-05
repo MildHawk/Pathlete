@@ -1,4 +1,4 @@
-function UserController(user) {
+function UserController($modal, user) {
   this.user = user;
   
   // calculate percent completed of goal
@@ -19,10 +19,18 @@ function UserController(user) {
 
   this.donate = function() {
     // trigger donate modal
+    var modal = $modal.open({
+      templateUrl: '/views/user/donation-form.html',
+      // template: '<div class="modal">sdfojdsgodsgjdsgsd</div>',
+      controller: function(){
+        console.log('control')
+      },
+      size: 'md'
+    });
   };
 
 }
-UserController.$inject = ['user'];
+UserController.$inject = ['$modal', 'user'];
 
 angular
   .module('pathleteApp.controllers.user', [])

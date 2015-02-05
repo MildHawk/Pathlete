@@ -96,6 +96,7 @@ var app = angular
     'pathleteApp.ToolbarCtrl',
     'pathleteApp.controllers.user',
     'ui.router',
+    'ui.bootstrap',
     'angularPayments'
   ])
   .config(config);
