@@ -71,8 +71,57 @@ function Donation($http) {
 
 Donation.$inject = ['$http'];
 
+function Challenges() {
+  var challenges = [
+    {
+      name: 'First Steps',
+      description:'Walk across the Golden Gate Bridge!',
+      goal: 3400,
+      unit:'steps',
+      image: 'background-image: url(../images/GoldenGateBridge.jpg); background-size: contain;'
+    }, {
+      name: 'Bay to Breakers',
+      description:'Get from AT&T Park to Lands End!',
+      goal: 15000,
+      unit:'steps',
+      image: 'background-image: url(../images/bayToBreakers.jpg); background-size: contain;'
+    }, {
+      name: 'Shire to Mordor',
+      description:'Can one simply walk to Mordor?',
+      goal: 3600000,
+      unit: 'steps',
+      image: 'background-image: url(../images/Mordor.jpg); background-size: contain;'
+    }, {
+      name: 'Hike the Burj Khalifa',
+      description:'Climb the worlds tallest building!',
+      goal: 290,  
+      unit: 'flights',
+      image: 'background-image: url(../images/Burj.jpg); background-size: contain;'
+    }, {
+      name: 'Everest Challenge',
+      description:'Climb 2900 flights of stairs!',
+      goal: 1200,
+      unit: 'flights',
+      image: 'background-image: url(../images/Everest_background.jpg); background-size: contain;'   
+    }, {
+      name: 'Walk Across America',
+      description:'Trek from SF to NY!',
+      goal: 5146000,
+      unit: 'steps',
+      image: 'background-image: url(../images/america.jpg); background-size: contain;'
+    }
+  ];
+
+  return {
+    challenges: challenges
+  };
+}
+
+Challenges.$inject = [];
+
 angular
   .module('pathleteApp.services', [])
   .factory('Info', Info)
   .factory('Tool', Tool)
-  .factory('Donation', Donation);
+  .factory('Donation', Donation)
+  .factory('Challenges', Challenges);

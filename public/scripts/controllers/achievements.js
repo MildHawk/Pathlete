@@ -1,6 +1,6 @@
 'use strict';
 
-function AchievementsCtrl($scope, $http, Info, Tool) {
+function AchievementsCtrl($scope, $http, Info, Tool, Challenges) {
   $scope.userInfo = undefined;
 
   Tool.toolbarOn();
