@@ -104,6 +104,7 @@ var app = angular
     'pathleteApp.controllers.user',
     'pathleteApp.ChallengeFormCtrl',
     'ui.router',
+    'ui.bootstrap',
     'angularPayments'
   ])
   .config(config);
