@@ -1,0 +1,61 @@
+<doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Pathlete</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/dist/css/app.css">
+    <base href="http://localhost:3000/" />
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  </head>
+  <body ng-app="pathleteApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container-fluid">
+      
+      <header class="header" ng-controller="ToolbarCtrl" ng-show="showing">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-pills pull-right">
+              <li><a href="user/123">User</a></li>
+              <li><a ui-sref="progress">Progress</a></li>
+              <li><a ui-sref="achievements">Achievements</a></li>
+              <li><a href="/logout" target="_self">Logout</a></li>
+            </ul>
+            <h3 class="text-muted">pathlete</h3>
+          </div>
+        </div>
+      </header>
+
+      <main ui-view class="container-fluid"></main>
+
+    </div>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/json3/lib/json3.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/controllers/main.js"></script>
+    <script src="/scripts/controllers/progress.js"></script>
+    <script src="/scripts/controllers/user.js"></script>
+    <script src="/scripts/controllers/achievements.js"></script>
+    <script src="/scripts/controllers/everest.js"></script>
+    <script src="/scripts/controllers/lutetia.js"></script>
+    <script src="/scripts/controllers/usa.js"></script>
+    <script src="/scripts/controllers/toolbar.js"></script>
+    <script src="/scripts/services.js"></script>
+    
+  </body>
+</html>

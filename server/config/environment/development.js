@@ -3,9 +3,9 @@
 // Development specific configuration
 // ==================================
 module.exports = {
-  // MongoDB connection options
-  mongo: {
-    uri: 'mongodb://localhost/archivr-dev'
+  // Firebase
+  firebase: {
+    uri: 'https://pathlete-dev.firebaseio.com/'
   },
 
   seedDB: true

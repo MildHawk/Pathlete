@@ -57,11 +57,13 @@ var jsFiles = [
 
 // Keep track of own JS files for linting
 var jsFilesForLint = [
-  // TODO: set files for linting
-  // paths.src.js + '/**/*.js',
-  // paths.server + '/**/*.js',
-  // paths.spec + '/**/*.js'
+  paths.src.js + '/**/*.js',
+  paths.server + '/**/*.js',
+  paths.spec + '/**/*.js'
 ];
+
+// Tracks if running from `gulp test`. If so, have JSHint error out.
+var runningTests = false;
 
 gulp.task('javascript', function() {
   gulp.src(jsFiles)
@@ -77,11 +79,17 @@ gulp.task('javascript', function() {
  * Run JSHint
  */
 gulp.task('lint', function() {
-  return gulp.src(jsFilesForLint)
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish))
-    // Error out if any warnings appear
-    .pipe(jshint.reporter('fail'));
+  if (runningTests) {
+    return gulp.src(jsFilesForLint)
+      .pipe(jshint())
+      .pipe(jshint.reporter(stylish))
+      // Error out if any warnings appear
+      .pipe(jshint.reporter('fail'));
+  } else {
+    return gulp.src(jsFilesForLint)
+      .pipe(jshint())
+      .pipe(jshint.reporter(stylish))
+  }
 });
 
 gulp.task('moveViews', function() {
@@ -136,9 +144,8 @@ gulp.task('test', function(callback) {
    * Use `runSequence` to call tasks synchronously, otherwise
    * messages from both will be potentially interleaved.
    */
-  // TODO add lint
-  // runSequence('lint', 'karma', 'mocha', callback);
-  runSequence('karma', 'mocha', callback);
+  runningTests = true;
+  runSequence('lint', 'karma', 'mocha', callback);
 });
 
 gulp.task('karma', function (done) {
