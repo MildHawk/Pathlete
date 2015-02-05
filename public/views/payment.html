@@ -1,12 +1,7 @@
-<form action="" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_KOkFuMFRVnJV5YjTC0FDbSDj"
-    data-amount="2000"
-    data-name="Demo Site"
-    data-description="2 widgets ($20.00)"
-    data-image="/128x128.png">
-  </script>
+<form stripe-form="stripeCallback"> 
+	<input ng-model="number" placeholder="Card Number" payment-format="card" payments-validate="card" /> 
+	<input ng-model="expiry" placeholder="Expiration" payment-format="expiry" payments-validate="expiry" /> 
+	<input ng-model="cvc" placeholder="CVC" payment-format="cvc" payments-validate="cvc" /> 
+	<button type="submit">Submit</button> 
 </form>
- 
- <input type="hidden" name="stripeToken" value="{{ tokenId }}" />
+

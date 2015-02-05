@@ -10,29 +10,21 @@
  */
 
 
-function Donation($scope, $http, Donation) {
-	
-	//on ng-init, configure Stripe
-	$scope.configureStripe = function() {
-      Donation.configureStripe();
-      //bind tokenId to scope to insert it the hidden field
-      $scope.tokenId = Donation.tokenId;
-	};
-
-  $scope.donationPopup = function() {
-
+function DonationCtrl($scope, $http, Donation) {
+  $scope.stripeCallback = function (code, result) { 
+    if (result.error) { 
+      console.log('it failed! error: ' + result.error.message); 
+    } else { 
+      console.log('success! token: ' + result.id); 
+      Donation.sendToServer(result.id);
+    } 
   };
-  //on ng-click, run sendDonation
-  $scope.sendDonation = function() {
-    Donation.makeDonation(name, description, amount);
-  };
+}
 
-});
-
-Donations.$inject = ['$scope', '$http', 'Donation'];
+DonationCtrl.$inject = ['$scope', '$http', 'Donation'];
 
 angular
-  .module('pathleteApp.Donation', [
+  .module('pathleteApp.DonationCtrl', [
     'pathleteApp.services'
   ])
-  .controller('Donation', Donation);
+  .controller('DonationCtrl', DonationCtrl);

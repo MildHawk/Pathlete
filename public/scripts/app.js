@@ -75,6 +75,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
 
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
+
   window.Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 }
 
@@ -91,6 +92,7 @@ var app = angular
     'pathleteApp.ProgressCtrl',
     'pathleteApp.ToolbarCtrl',
     'pathleteApp.controllers.user',
-    'ui.router'
+    'ui.router',
+    'angularPayments'
   ])
   .config(config);
