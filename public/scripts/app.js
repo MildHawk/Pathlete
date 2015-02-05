@@ -85,7 +85,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
 
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
-
+  //Public key used to generate a token that will be sent to the server
   window.Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 }
 
