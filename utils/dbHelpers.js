@@ -1,4 +1,5 @@
 var db = require('./db.js');
+var config = require('../server/config/environment');
 
 module.exports = {
   addUser: function (token, tokenSecret, profile, done){
@@ -63,20 +64,25 @@ module.exports = {
       });
   },
 
-  addDonation: function (token, email) {
+  addDonation: function (token, name, amount, cb) {
     // Set your secret key: remember to change this to your live secret key in production
     // See your keys here https://dashboard.stripe.com/account
     var stripe = require("stripe")(config.stripe.apiKey);
-
+    console.log("inside addDonation");
     var charge = stripe.charges.create({
-      amount: 1000, // amount in cents, again
+      amount: amount, // amount in cents, again
       currency: "usd",
       card: token,
-      description: "payinguser@example.com"
+      description: name
     }, function(err, charge) {
+      console.log("err in addDonation", err);
+      console.log("charge in addDonation", charge);
       if (err && err.type === 'StripeCardError') {
-        // The card has been declined
+        console.log("card declined");
+        cb(err, null);
+        return;
       }
+      cb(null, charge);
     });
   },
   getDonation: function() {

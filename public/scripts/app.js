@@ -38,7 +38,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
               info: 'The Climb Mount Everest challenge involves walking up 18,000 flights of stairs. People frequently die on this challenge.',
               raised: '$123'
             }
-          }
+          };
         }]
       }
     })
@@ -79,13 +79,17 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'ChallengeFormCtrl',
       controllerAs: 'ChallengeFormCtrl',
       url: '/create-challenge'
+    })
+    .state('donation', {
+      templateUrl: '/views/user/donation-form.html',
+      controller: 'DonationCtrl'
     });
 
   //$urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode({enabled: true, requireBase: false});
 
-
+  //Public key used to generate a token that will be sent to the server
   window.Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 }
 
@@ -101,6 +105,7 @@ var app = angular
     'pathleteApp.MainCtrl',
     'pathleteApp.ProgressCtrl',
     'pathleteApp.ToolbarCtrl',
+    'pathleteApp.DonationCtrl',
     'pathleteApp.controllers.user',
     'pathleteApp.ChallengeFormCtrl',
     'ui.router',

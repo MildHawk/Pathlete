@@ -16,8 +16,15 @@ function DonationCtrl($scope, $http, Donation) {
       console.log('it failed! error: ' + result.error.message); 
     } else { 
       console.log('success! token: ' + result.id); 
-      Donation.sendToServer(result.id);
+      Donation.sendTokenToServer(result.id);
     } 
+  };
+
+  $scope.getData = function(name, amount) {
+    console.log("name", name);
+    console.log("amount", amount);
+
+    Donation.setDonor(name, amount);
   };
 }
 

@@ -49,8 +49,13 @@ router.post('/donations', function(req, res) {
   // (Assuming you're using express - expressjs.com)
   // Get the credit card details submitted by the form
   var token = req.body.stripeToken;
-  var email = req.body.stripeEmail;
-  dbHelper.addDonation(token);
+  var name = req.body.name;
+  var amount = req.body.amount;
+  console.log("inside /donations on server");
+  dbHelper.addDonation(token, name, amount, function(err, charge) {
+    if(err) return res.status(500).end()
+    res.status(201).end("charge successful");
+  });
 });
 
 // router.get('/donations');
