@@ -21,10 +21,7 @@ function UserController($modal, user) {
     // trigger donate modal
     var modal = $modal.open({
       templateUrl: '/views/user/donation-form.html',
-      // template: '<div class="modal">sdfojdsgodsgjdsgsd</div>',
-      controller: function(){
-        console.log('control')
-      },
+      controller: function(){}, // TODO: hook in real modal controller
       size: 'md'
     });
   };
