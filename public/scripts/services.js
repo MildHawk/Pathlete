@@ -73,8 +73,8 @@ function Donation($http) {
     .then(function (resp) {
       return resp.data;
     })
-    .catch(function() {
-
+    .catch(function(err) {
+      console.log("error on POST request", err);
     });
   };
 
