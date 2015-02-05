@@ -1,4 +1,4 @@
-<div class="modal-body" ng-controller="DonationCtrl">
+<!--<div class="modal-body" ng-controller="DonationCtrl">
     <div class="row">
         <div class="col-xs-12 col-md-12">
             <div class="panel panel-default">
@@ -62,3 +62,15 @@
         </div>
     </div>
 </div>
+-->
+<div ng-controller="DonationCtrl">
+<form stripe-form="stripeCallback"> 
+  <input ng-model="name" type="text" placeholder="Name" />
+  <input ng-model="amount" type="text" placeholder="Amount" />
+  <input ng-model="number" placeholder="Card Number" payment-format="card" payments-validate="card" /> 
+  <input ng-model="expiry" placeholder="Expiration" payment-format="expiry" payments-validate="expiry" /> 
+  <input ng-model="cvc" placeholder="CVC" payment-format="cvc" payments-validate="cvc" /> 
+  <button type="submit" ng-click="getData(name, amount)">Submit</button> 
+</form>
+</div>
+
