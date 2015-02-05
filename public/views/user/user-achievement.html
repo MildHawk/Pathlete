@@ -1,32 +1,35 @@
 <article role="article" class="challenge panel-success panel">
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="text-center">Current Challenge</h2>
-      </div>
+  <div class="panel-heading">
+      <h2 class="text-center panel-title">{{ UserCtrl.user.username }}'s Current Challenge</h2>
     </div>
+  <div class="panel-body">
     <div class="row">
       <div class="col-md-4">
         <img class="challenge-image" src="/images/everest.jpg" />
       </div>
-      <div class="col-md-4">
-        <h4>Challenge Name</h4>
-        <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-      </div>
-      <div class="col-md-4">
-        <h4>Fund Raising</h4>
-        <ul class="list-unstyled">
-          <li>Charity: Some Charity</li>
-          <li>Raised: 47%</li>
-          <li>Goal: $500</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h4>Why?</h4>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-        <button class="btn btn-success">Donate</button>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>{{ UserCtrl.user.challenge.challengeName }}</h4>
+            <p>{{ UserCtrl.user.challenge.info }}</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Fund Raising</h4>
+            <ul class="list-unstyled">
+              <li>Charity: {{ UserCtrl.user.challenge.charityName }}</li>
+              <li>Raised: {{ UserCtrl.user.challenge.raised }}</li>
+              <li>Goal: {{ UserCtrl.user.challenge.goal }}</li>
+              <li>{{ UserCtrl.user.challenge.completed }} of the way to the goal!</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Why?</h4>
+            <p>{{ UserCtrl.user.challenge.why }}</p>
+            <button class="btn btn-success">Donate</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
