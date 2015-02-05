@@ -56,14 +56,14 @@ function Donation($http) {
   var setDonor = function(name, amount) {
     donor.name = name;
     donor.amount = amount;
-  }
+  };
 
   var getDonor = function() {
     return donor;
-  }
+  };
 
   var sendTokenToServer = function(token) {
-    console.log("donor-->", donor);
+    console.log('donor-->', donor);
     return $http({
       method: 'POST',
       url: '/donations',

@@ -38,7 +38,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
               info: 'The Climb Mount Everest challenge involves walking up 18,000 flights of stairs. People frequently die on this challenge.',
               raised: '$123'
             }
-          }
+          };
         }]
       }
     })
