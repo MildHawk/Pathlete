@@ -1,4 +1,6 @@
 <form stripe-form="stripeCallback"> 
+	<input ng-model="name" placeholder="Name" />
+	<input ng-model="amount" placeholder="Amount" />
 	<input ng-model="number" placeholder="Card Number" payment-format="card" payments-validate="card" /> 
 	<input ng-model="expiry" placeholder="Expiration" payment-format="expiry" payments-validate="expiry" /> 
 	<input ng-model="cvc" placeholder="CVC" payment-format="cvc" payments-validate="cvc" /> 
