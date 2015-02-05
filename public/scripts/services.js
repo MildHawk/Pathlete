@@ -56,6 +56,7 @@ function Donation($http) {
   var setDonor = function(name, amount) {
     donor.name = name;
     donor.amount = amount;
+    console.log(donor);
   };
 
   var getDonor = function() {

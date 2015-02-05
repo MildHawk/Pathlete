@@ -105,6 +105,7 @@ var app = angular
     'pathleteApp.MainCtrl',
     'pathleteApp.ProgressCtrl',
     'pathleteApp.ToolbarCtrl',
+    'pathleteApp.DonationCtrl',
     'pathleteApp.controllers.user',
     'pathleteApp.ChallengeFormCtrl',
     'ui.router',

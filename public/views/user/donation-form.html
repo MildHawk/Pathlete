@@ -1,4 +1,4 @@
-<div class="modal-body">
+<div class="modal-body" ng-controller="DonationCtrl">
     <div class="row">
         <div class="col-xs-12 col-md-12">
             <div class="panel panel-default">
@@ -8,7 +8,7 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form" stripe-form="stripeCallback">
+                    <form stripe-form="stripeCallback">
     
                     <div class="row">
                         <div class="col-md-8">
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <br/>
-            <button type="submit" class="btn btn-success btn-lg btn-block" role="button" ng-click="getData(name, amount)">Pay</button> 
+            <button type="submit" class="btn btn-success btn-lg btn-block" ng-click="getData(name, amount)">Pay</button> 
         </div>
     </div>
 </div>
