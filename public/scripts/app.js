@@ -79,6 +79,10 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
       controller: 'ChallengeFormCtrl',
       controllerAs: 'ChallengeFormCtrl',
       url: '/create-challenge'
+    })
+    .state('donation', {
+      templateUrl: '/views/payment.html',
+      controller: 'DonationCtrl'
     });
 
   //$urlRouterProvider.otherwise('/');
