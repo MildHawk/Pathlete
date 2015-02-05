@@ -30,9 +30,12 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
             quote: '"I enjoy walking around my neighborhood at night!"',
             challenge: {
               challengeName: 'Climb Mount Everest',
+              why: 'Since I was a wee boy I\'ve always dreamed about walking a distance equivilent to walking up Mount Everest.  With your contribution of $500 my dream could become reality.',
               createAt: '11-22-2015',
               goalDate: '11-22-2016',
+              charityName: 'Bobs Donut Shop',
               goal: '$500',
+              info: 'The Climb Mount Everest challenge involves walking up 18,000 flights of stairs. People frequently die on this challenge.',
               raised: '$123'
             }
           }
