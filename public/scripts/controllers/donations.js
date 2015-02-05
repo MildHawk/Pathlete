@@ -21,7 +21,9 @@ function DonationCtrl($scope, $http, Donation) {
   };
 
   $scope.getData = function(name, amount) {
-    console.log("inside getdata");
+    console.log("name", name);
+    console.log("amount", amount);
+
     Donation.setDonor(name, amount);
   };
 }

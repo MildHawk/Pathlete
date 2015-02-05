@@ -13,13 +13,13 @@
                     <div class="row">
                         <div class="col-md-8">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" />
+                            <input ng-model="name" type="text" id="name" name="name" class="form-control" placeholder="John Doe" />
                         </div>
                         <div class="col-md-4">
                             <label for="amount">Contribution Amount</label>
                             <div class="input-group">
                               <div class="input-group-addon">$</div>
-                              <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                              <input ng-model="amount" type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
                               <div class="input-group-addon">.00</div>
                             </div>
                         </div>
