@@ -1,5 +1,5 @@
 
-function ChallengeFormCtrl(Challenges) {
+function ChallengeFormCtrl($http, Challenges) {
   // Challenges available to user
   this.challenges = Challenges.challenges;
 
@@ -14,9 +14,21 @@ function ChallengeFormCtrl(Challenges) {
   this.isSelected = function(index) {
     return this.selection === index;
   };
+
+  // Handle form submission
+  this.handleSubmit = function() {
+    // Add challenge selection to form
+    this.formInfo.selection = this.selection;
+
+    // TODO: Validate some stuff
+
+    // TODO: connect to server
+    console.log('Submitting form:', this.formInfo);
+
+  };
 }
 
-ChallengeFormCtrl.$inject = ['Challenges'];
+ChallengeFormCtrl.$inject = ['$http', 'Challenges'];
 
 angular
   .module('pathleteApp.ChallengeFormCtrl', [
