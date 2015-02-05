@@ -15,5 +15,14 @@
   <div class="col-sm-9">
     <div ng-include="'/views/user/user-achievement.html'"></div>
     <div ng-include="'/views/user/user-lifetime-stats.html'"></div>
+    <hr>
+    <div ng-hide="UserCtrl.hasChallenge">
+      <h2>Exercise to Make a Difference</h2>
+      <p>Looks like you don't have a challenge selected!</p>
+      <p>You can choose a challenge, pick a charity, then raise money with the help of friends to make a difference.</p>
+      <a href="/create-challenge">
+        <button class="btn btn-primary">Create Challenge</button>
+      </a>
+    </div>
   </div>
 </div>
