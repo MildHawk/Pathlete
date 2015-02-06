@@ -11,14 +11,14 @@ function UserController($http, $modal, user, Donation) {
      * converts amount raised into percent string
      * and adds to user challenge object.
      */
-    goal = parseInt(goal.substr(1), 10);
-    raised = parseInt(raised.substr(1), 10);
+    goal = parseInt(goal, 10);
+    raised = parseInt(raised, 10);
     var completed = (raised/goal) + '';
-    return completed.split('.')[1].substr(0, 2) + '%';
+    return completed + '%';
   }
 
   // calculate percent completed of goal
-  if (this.user.challenge.goal && this.user.challenge.raised) {
+  if (this.user.challenge) {
     this.user.challenge.completed = getGoalPercent(this.user.challenge.goal, this.user.challenge.raised);
   }
 
