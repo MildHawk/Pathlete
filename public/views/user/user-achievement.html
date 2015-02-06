@@ -11,12 +11,12 @@
         <div class="row">
           <div class="col-md-6">
             <h4>{{ UserCtrl.user.challenge.challengeName }}</h4>
-            <p>{{ UserCtrl.user.challenge.info }}</p>
+            <p>{{ UserCtrl.user.challenge.challengeDescription }}</p>
           </div>
           <div class="col-md-6">
             <h4>Fund Raising</h4>
             <ul class="list-unstyled">
-              <li>Charity: {{ UserCtrl.user.challenge.charityName }}</li>
+              <li>Charity: {{ UserCtrl.user.challenge.charity }}</li>
               <li>Raised: {{ UserCtrl.user.challenge.raised }}</li>
               <li>Goal: {{ UserCtrl.user.challenge.goal }}</li>
               <li>{{ UserCtrl.user.challenge.completed }} of the way to the goal!</li>
@@ -26,7 +26,7 @@
         <div class="row">
           <div class="col-md-12">
             <h4>Why?</h4>
-            <p>{{ UserCtrl.user.challenge.why }}</p>
+            <p>{{ UserCtrl.user.challenge.motivation }}</p>
             <button class="btn btn-success" ng-click="UserCtrl.donate()">Donate</button>
           </div>
         </div>
