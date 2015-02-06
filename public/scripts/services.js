@@ -67,10 +67,10 @@ function Donation($http, $stateParams, $modal) {
       data: { stripeToken: token, name: donor.name, amount: donor.amount, userId: $stateParams.userId }
     })
     .then(function (resp) {    
-
+      return resp;
     })
     .catch(function(err) {
-      console.log('error on POST request', err);
+      return err;
     });
   };
 
