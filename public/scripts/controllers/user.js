@@ -18,9 +18,9 @@ function UserController($http, $modal, user, Donation) {
   }
 
   // calculate percent completed of goal
-  if (this.user.challenge.goal && this.user.challenge.raised) {
-    this.user.challenge.completed = getGoalPercent(this.user.challenge.goal, this.user.challenge.raised);
-  }
+  // if (this.user.challenge.goal && this.user.challenge.raised) {
+  //   this.user.challenge.completed = getGoalPercent(this.user.challenge.goal, this.user.challenge.raised);
+  // }
 
   this.donate = function() {
     // trigger donate modal
