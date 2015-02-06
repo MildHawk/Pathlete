@@ -53,12 +53,13 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('progress', {
       templateUrl: '/views/progress.html',
       controller: 'ProgressCtrl',
-      url: '/progress'
+      url: '/progress',
+      authenticate: true
     })
     .state('everest', {
-       templateUrl: '/views/everest.html',
-       controller: 'EverestCtrl',
-       url: '/progress/everest'
+      templateUrl: '/views/everest.html',
+      controller: 'EverestCtrl',
+      url: '/progress/everest'
     })
     .state('lutetia', {
       templateUrl: '/views/lutetia.html',
@@ -73,14 +74,16 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
     .state('achievements', {
       templateUrl: '/views/achievements.html',
       controller: 'AchievementsCtrl',
-      url: '/achievements'
+      url: '/achievements',
+      authenticate: true
     })
     // TODO: nest this into user view
     .state('createChallenge', {
       templateUrl: 'views/user/create-challenge-form.html',
       controller: 'ChallengeFormCtrl',
       controllerAs: 'ChallengeFormCtrl',
-      url: '/create-challenge'
+      url: '/create-challenge',
+      authenticate: true
     })
     .state('donation', {
       templateUrl: '/views/user/donation-form.html',
@@ -96,6 +99,25 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
 }
 
 config.$inject = ['$stateProvider', '$locationProvider','$urlRouterProvider'];
+
+function run($rootScope, $state, Auth) {
+  $rootScope.$on('$stateChangeStart', 
+                 function(e, toState, toParams, fromState, fromParams) {
+    if(toState.authenticate) {
+      Auth.isAuth()
+        .success(function(authenticated) {
+          if (!authenticated) {
+            e.preventDefault();
+            window.location = '/login';
+          }
+        }).error(function() {
+          console.error('Error handling authentication');
+        });
+    }
+  });
+}
+
+run.$inject = ['$rootScope', '$state', 'Auth'];
 
 var app = angular
   .module('pathleteApp', [
@@ -114,4 +136,5 @@ var app = angular
     'ui.bootstrap',
     'angularPayments'
   ])
-  .config(config);
+  .config(config)
+  .run(run);
