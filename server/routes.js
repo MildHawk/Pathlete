@@ -114,6 +114,17 @@ router.get('/authorized/:profileId', function(req, res) {
   }
 });
 
+router.get('/api/user/:userId', function(req, res) {
+  var userId = req.params.userId;
+  dbHelper.getUser(userId, function(user) {
+    if (user) {
+      return res.status(200).json(user);
+    } else {
+      return res.status(404).json({ message: 'No user found' });
+    }
+  });
+});
+
 // router.get('/donations');
 
 /**

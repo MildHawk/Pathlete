@@ -11,37 +11,12 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
       resolve: {
         // inject the user into state via resolve
         user: ['$http', '$stateParams', function($http, $stateParams) {
-          
-          // TODO: Make api end point to return users
-          // return $http.get('/api/user/' + $stateParams.userId).then(function(response) {
-          //   // return user data
-          //   return response.data;
-          // }).catch(function(err) {
-          //   // user doesn't exist?
-          // });
-    
-          return {
-            _id: '1241421414124',
-            id: '123',
-            username: 'RickWuebker',
-            age: 36,
-            location: {
-              city: 'San Francisco',
-              state: 'CA'
-            },
-            totalSteps: 666,
-            quote: '"I enjoy walking around my neighborhood at night!"',
-            challenge: {
-              challengeName: 'Climb Mount Everest',
-              why: 'Since I was a wee boy I\'ve always dreamed about walking a distance equivilent to walking up Mount Everest.  With your contribution of $500 my dream could become reality.',
-              createAt: '11-22-2015',
-              goalDate: '11-22-2016',
-              charityName: 'Bobs Donut Shop',
-              goal: '$500',
-              info: 'The Climb Mount Everest challenge involves walking up 18,000 flights of stairs. People frequently die on this challenge.',
-              raised: '$123'
-            }
-          };
+          return $http.get('/api/user/' + $stateParams.userId).then(function(response) {
+            return response.data;
+          }).catch(function(err) {
+            // user doesn't exist
+            console.log('thats a dirty user');
+          });
         }]
       }
     })
