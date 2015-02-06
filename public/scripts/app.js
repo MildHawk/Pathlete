@@ -112,7 +112,8 @@ var app = angular
     'ui.router',
     'ui.bootstrap',
     'angularPayments',
-    'pathleteApp.controllers.modalInstance'
+    'pathleteApp.controllers.modalInstance',
+    'angularSpinner'
   ])
   .config(config)
   .run(run);
