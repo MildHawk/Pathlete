@@ -45,6 +45,33 @@ router.get('/userdata', function(req, res) {
   });
 });
 
+router.post('/api/challenge', function(req, res, next) {
+  var userId = req.user.id;
+  var challenge = req.body;
+  dbHelper.addChallenge(userId, challenge, function(err, challenge) {
+    if(err) { 
+      return res.status(500).json({ 
+        message: 'Error saving challenge' 
+      });
+    } else {
+      return res.status(201).json({
+        message: 'Challenge updated/created'
+      });
+    }
+  });
+});
+
+router.get('/api/challenge/:userId', function(req, res, next) {
+  var userId = req.params.userId;
+  dbHelper.getChallenge(userId, function(challenge) {
+    if(challenge){
+      return res.status(200).json(challenge);
+    } else {
+      return res.status(404).json({ message: 'No challenge found' });
+    }
+  });
+});
+
 router.post('/donations', function(req, res) {
   // (Assuming you're using express - expressjs.com)
   // Get the credit card details submitted by the form

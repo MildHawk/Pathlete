@@ -85,6 +85,7 @@ module.exports = {
       cb(null, charge);
     });
   },
+
   increaseAmount: function(userId, passedAmount, cb) {
     var newAmount = 0;
     var challenge = db.child('users').child(userId).child('challenge')
@@ -95,13 +96,54 @@ module.exports = {
         if(err) return cb(err, null);
         cb(null, true);
       });
-
+    }
         // TODO: error handling
         // TODO: maybe? Send back updated user db model
         // db.child('users').child(userID).once('value', function(data) {
         //   // console.log('db user from addUserStats:', data.val());
         //   done(data.val());
         // });
+  },
+
+
+  getDonation: function() {
+
+  },
+
+  addChallenge: function(userId, challenge, callback) {
+    
+    db.child('users').child('2Z5YT7').once('value', function(data) {
+      var props = data.val();
+      challenge = JSON.parse(challenge);
+
+      if(props['challenge']) {
+        // update
+        db.child('users')
+          .child(userId)
+          .child('challenge')
+          .update(challenge, function(err) {
+            // pass error and challenge back
+            callback(err, challenge);
+          });
+
+      } else {
+        // create
+        db.child('users')
+          .child(userId)
+          .child('challenge')
+          .set(challenge, function(err) {
+            // pass error and challenge back
+            callback(err, challenge);
+          });
+      }
+    });
+
+  },
+
+  getChallenge: function(userId, callback) {
+    db.child('users').child(userId).once('value', function(data) {
+      var props = data.val();
+      callback(props.challenge);
     });
   }
 
