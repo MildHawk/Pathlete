@@ -1,10 +1,7 @@
-function UserController($http, $modal, user, Donation) {
+function UserController($http, $modal, user, Donation, Challenges) {
 
   this.user = user;
-
   this.isEditing = false;
-  
-  console.log('data', this.user);
   
   function getGoalPercent(goal, raised) {
     /**
@@ -52,7 +49,7 @@ function UserController($http, $modal, user, Donation) {
   this.checkAuth();
 
 }
-UserController.$inject = ['$http','$modal', 'user','Donation'];
+UserController.$inject = ['$http','$modal', 'user','Donation', 'Challenges'];
 
 angular
   .module('pathleteApp.controllers.user', [])

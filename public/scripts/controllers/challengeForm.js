@@ -22,6 +22,7 @@ function ChallengeFormCtrl($http, Challenges) {
     _this.formInfo.challengeName = Challenges.challenges[_this.selection].name;
     _this.formInfo.challengeDescription =
       Challenges.challenges[_this.selection].description;
+    _this.formInfo.challengeImage = Challenges.challenges[_this.selection].imageSrc;
 
     _this.formInfo.raised = 0;
 
