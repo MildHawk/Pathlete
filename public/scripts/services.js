@@ -74,7 +74,7 @@ function Donation($http, $stateParams) {
       return resp.data;
     })
     .catch(function(err) {
-      console.log("error on POST request", err);
+      console.log('error on POST request', err);
     });
   };
 

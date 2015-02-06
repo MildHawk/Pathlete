@@ -1,15 +1,5 @@
 'use strict';
 
-/**
- * 
- * 
- * 
- * 
- * 
- * 
- */
-
-
 function DonationCtrl($scope, $http, Donation) {
   $scope.stripeCallback = function (code, result) { 
     if (result.error) { 
@@ -21,8 +11,8 @@ function DonationCtrl($scope, $http, Donation) {
   };
 
   $scope.getData = function(name, amount) {
-    console.log("name", name);
-    console.log("amount", amount);
+    console.log('name', name);
+    console.log('amount', amount);
 
     Donation.setDonor(name, amount);
   };
