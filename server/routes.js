@@ -107,7 +107,6 @@ router.get('/authenticated', function(req, res) {
  * the lack of JWTs.
  */
 router.get('/authorized/:profileId', function(req, res) {
-  if(!req.user) return res.status(401).json(false);
   if (req.user.id === req.params.profileId) {
     return res.status(200).json(true);
   } else {
