@@ -1,5 +1,6 @@
 function UserController($modal, user) {
   this.user = user;
+  this.isEditing = false;
   
   function getGoalPercent(goal, raised) {
     /**
@@ -24,6 +25,14 @@ function UserController($modal, user) {
       controller: function(){}, // TODO: hook in real modal controller
       size: 'md'
     });
+  };
+
+  this.editProfile = function() {
+    this.isEditing = true;
+  };
+
+  this.saveProfile = function() {
+    this.isEditing = false;
   };
 
 }

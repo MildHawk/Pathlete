@@ -164,6 +164,16 @@ img {
   // height:328px;
 }
 
+.profile-header {
+  display: -webkit-box;
+  span.glyphicon-cog {
+    float:left; 
+    position:relative;
+    margin:20px;
+  }
+}
+
 div.selected {
   border: 3px solid green;
 }
+
