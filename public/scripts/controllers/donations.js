@@ -5,6 +5,7 @@ function DonationCtrl($scope, $http, $modalInstance, $modal, $timeout, Donation)
     $scope.loading = true;
     if (result.error) { 
       console.log('it failed! error: ' + result.error.message); 
+      $scope.loading = false;
     } else { 
       console.log('success! token: ' + result.id); 
       Donation.sendTokenToServer(result.id).then(function(val){
