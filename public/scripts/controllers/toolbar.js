@@ -15,7 +15,7 @@ function ToolbarCtrl($scope, $http, $location, Tool) {
         $location.url('/user/' + res.data.id);
       }
     });
-  }
+  };
 }
 ToolbarCtrl.$inject = ['$scope', '$http', '$location', 'Tool'];
 
