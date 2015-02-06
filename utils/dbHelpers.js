@@ -130,9 +130,8 @@ module.exports = {
 
   addChallenge: function(userId, challenge, callback) {
     
-    db.child('users').child('2Z5YT7').once('value', function(data) {
+    db.child('users').child(userId).once('value', function(data) {
       var props = data.val();
-      challenge = JSON.parse(challenge);
 
       if(props['challenge']) {
         // update
