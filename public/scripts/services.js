@@ -138,7 +138,7 @@ Challenges.$inject = [];
 function Auth($http) {
   
   var isAuth = function() {
-    return $http.get('/authenticated')
+    return $http.get('/authenticated');
   };
 
   return {

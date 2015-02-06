@@ -95,7 +95,7 @@ router.post('/donations', function(req, res) {
  * Returns whether user session is authenticated.
  */
 router.get('/authenticated', function(req, res) {
-  return res.status(200).json(!!req.user)
+  return res.status(200).json(!!req.user);
 });
 
 /**
