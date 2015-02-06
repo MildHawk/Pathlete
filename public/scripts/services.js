@@ -135,9 +135,24 @@ function Challenges() {
 
 Challenges.$inject = [];
 
+function Auth($http) {
+  
+  var isAuth = function() {
+    return $http.get('/authenticated');
+  };
+
+  return {
+    isAuth: isAuth
+  };
+  
+}
+
+Auth.$inject = ['$http'];
+
 angular
   .module('pathleteApp.services', [])
   .factory('Info', Info)
   .factory('Tool', Tool)
   .factory('Donation', Donation)
-  .factory('Challenges', Challenges);
+  .factory('Challenges', Challenges)
+  .factory('Auth', Auth);

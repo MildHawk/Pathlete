@@ -90,6 +90,15 @@ router.post('/donations', function(req, res) {
 });
 
 /**
+ * GET /authenticated
+ * ==================
+ * Returns whether user session is authenticated.
+ */
+router.get('/authenticated', function(req, res) {
+  return res.status(200).json(!!req.user);
+});
+
+/**
  * GET /authorized
  * ================
  * Client sends the user profile ID it is currently viewing. Server checks if
@@ -106,5 +115,18 @@ router.get('/authorized/:profileId', function(req, res) {
 });
 
 // router.get('/donations');
+
+/**
+ * restrict
+ * ========
+ * Middleware to require user authentication via passport
+ */
+function restrict(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
 
 module.exports = router;
