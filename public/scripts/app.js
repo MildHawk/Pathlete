@@ -135,7 +135,8 @@ var app = angular
     'pathleteApp.ChallengeFormCtrl',
     'ui.router',
     'ui.bootstrap',
-    'angularPayments'
+    'angularPayments',
+    'pathleteApp.controllers.modalInstance'
   ])
   .config(config)
   .run(run);
