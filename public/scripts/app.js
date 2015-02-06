@@ -16,6 +16,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
           }).catch(function(err) {
             // user doesn't exist
             console.log('thats a dirty user');
+            // send them to a 404?
           });
         }]
       }
