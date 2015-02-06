@@ -22,6 +22,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
     
           return {
             _id: '1241421414124',
+            id: '123',
             username: 'RickWuebker',
             age: 36,
             location: {

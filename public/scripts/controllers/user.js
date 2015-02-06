@@ -1,5 +1,6 @@
-function UserController($modal, user) {
+function UserController($http, $modal, user) {
   this.user = user;
+  this.isEditing = false;
   
   function getGoalPercent(goal, raised) {
     /**
@@ -26,8 +27,28 @@ function UserController($modal, user) {
     });
   };
 
+  this.editProfile = function() {
+    this.isEditing = true;
+  };
+
+  this.saveProfile = function() {
+    this.isEditing = false;
+  };
+
+  this.isAuthorized = false;
+
+  this.checkAuth = function() {
+    var _this = this;
+    $http.get('/authorized/' + user.id)
+      .success(function(result) {
+        _this.isAuthorized = result.data;
+      });
+  };
+
+  this.checkAuth();
+
 }
-UserController.$inject = ['$modal', 'user'];
+UserController.$inject = ['$http', '$modal', 'user'];
 
 angular
   .module('pathleteApp.controllers.user', [])
