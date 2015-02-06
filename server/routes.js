@@ -81,7 +81,7 @@ router.post('/donations', function(req, res) {
   var userId = req.body.userId;
   console.log('inside /donations on server');
   dbHelper.addDonation(token, name, amount, function(err, charge) {
-    if(err) {
+    if( err ) {
       console.log('inside error on server and here is err', err);
       return res.sendStatus(500);
     } else {
