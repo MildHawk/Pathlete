@@ -67,10 +67,10 @@ function Donation($http, $stateParams, $modal) {
       data: { stripeToken: token, name: donor.name, amount: donor.amount, userId: $stateParams.userId }
     })
     .success(function (resp) {    
-      return "success";
+      return 'success';
     })
     .catch(function(err) {
-      return "error";
+      return 'error';
     });
   };
 

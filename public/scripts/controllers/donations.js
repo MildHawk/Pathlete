@@ -50,7 +50,7 @@ function DonationCtrl($scope, $http, $modalInstance, $modal, $timeout, Donation)
 
 
   $scope.closeModal = function(){
-    console.log("inside closeModal");
+    console.log('inside closeModal');
     $modalInstance.close();    
   };
 
@@ -58,7 +58,7 @@ function DonationCtrl($scope, $http, $modalInstance, $modal, $timeout, Donation)
     amount = amount * 100;
     Donation.setDonor(name, amount);
   };
-};
+}
 
 DonationCtrl.$inject = ['$scope', '$http', '$modalInstance', '$modal', '$timeout','Donation'];
 
