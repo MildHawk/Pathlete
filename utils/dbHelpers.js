@@ -85,8 +85,24 @@ module.exports = {
       cb(null, charge);
     });
   },
-  getDonation: function() {
+  increaseAmount: function(userId, passedAmount, cb) {
+    var newAmount = 0;
+    var challenge = db.child('users').child(userId).child('challenge')
+    challenge.child('raised').once('value', function(currentAmount) {
+      var currentAmountValue = currentAmount.val()
+      newAmount = currentAmountValue + passedAmount;
+      challenge.update({"raised": newAmount}, function(err) {
+        if(err) return cb(err, null);
+        cb(null, true);
+      });
 
+        // TODO: error handling
+        // TODO: maybe? Send back updated user db model
+        // db.child('users').child(userID).once('value', function(data) {
+        //   // console.log('db user from addUserStats:', data.val());
+        //   done(data.val());
+        // });
+    });
   }
 
 };

@@ -49,7 +49,7 @@ function Tool($rootScope) {
 
 Tool.$inject = ['$rootScope'];
 
-function Donation($http) {
+function Donation($http, $stateParams) {
 
   var donor = {};
 
@@ -68,7 +68,7 @@ function Donation($http) {
     return $http({
       method: 'POST',
       url: '/donations',
-      data: { stripeToken: token, name: donor.name, amount: donor.amount }
+      data: { stripeToken: token, name: donor.name, amount: donor.amount, userId: $stateParams.userId }
     })
     .then(function (resp) {
       return resp.data;
@@ -85,7 +85,7 @@ function Donation($http) {
   };
 }
 
-Donation.$inject = ['$http'];
+Donation.$inject = ['$http', '$stateParams'];
 
 function Challenges() {
   var challenges = [

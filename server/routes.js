@@ -51,10 +51,14 @@ router.post('/donations', function(req, res) {
   var token = req.body.stripeToken;
   var name = req.body.name;
   var amount = req.body.amount;
+  var userId = req.body.userId;
   console.log("inside /donations on server");
   dbHelper.addDonation(token, name, amount, function(err, charge) {
-    if(err) return res.status(500).end()
-    res.status(201).end("charge successful");
+    if(err) return res.status(500).end();
+    dbHelper.increaseAmount(userId, charge.amount, function(err, isSuccessful) {
+      if(err) return res.status(500).end();
+      res.status(201).end("charge successful");
+    });
   });
 });
 
