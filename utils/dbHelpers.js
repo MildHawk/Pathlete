@@ -20,7 +20,7 @@ module.exports = {
       user.strideRunning = profile._json.user.strideLengthRunning;
       user.strideWalking = profile._json.user.strideLengthWalking;
       user.units = profile._json.user.distanceUnit;
-      user.image = profile._json.user.avatar150;
+      user.image = profile._json.user.avatar150 || 'http://www.fitbit.com/images/profile/defaultProfile_150_male.gif';
 
       //if user is not already in the db
       if (data.val() === null) {
