@@ -1,4 +1,4 @@
-function UserController($modal, user) {
+function UserController($http, $modal, user) {
   this.user = user;
   this.isEditing = false;
   
@@ -35,8 +35,20 @@ function UserController($modal, user) {
     this.isEditing = false;
   };
 
+  this.isAuthorized = false;
+
+  this.checkAuth = function() {
+    var _this = this;
+    $http.get('/authorized/' + user.id)
+      .success(function(result) {
+        _this.isAuthorized = result.data;
+      });
+  };
+
+  this.checkAuth();
+
 }
-UserController.$inject = ['$modal', 'user'];
+UserController.$inject = ['$http', '$modal', 'user'];
 
 angular
   .module('pathleteApp.controllers.user', [])

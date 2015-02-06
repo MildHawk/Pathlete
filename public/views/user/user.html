@@ -6,7 +6,8 @@
         {{ UserCtrl.user.username }}
       </h2>
       <span class="glyphicon glyphicon-cog"
-        ng-click="UserCtrl.editProfile()"></span>
+        ng-click="UserCtrl.editProfile()"
+        ng-show="UserCtrl.isAuthorized"></span>
     </div>
     <ul class="list-unstyled text-left" ng-hide="UserCtrl.isEditing">
       <li>
