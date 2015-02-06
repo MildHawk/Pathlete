@@ -7,7 +7,7 @@ function DonationCtrl($scope, $http, $modalInstance, $modal, $timeout, Donation)
     } else { 
       console.log('success! token: ' + result.id); 
       Donation.sendTokenToServer(result.id).then(function(val){
-        console.log("this is value:",val);
+        console.log('this is value:',val);
         $modalInstance.close();
         var modalThanks = $modal.open({
           templateUrl: '/views/user/thankyou.html',
@@ -24,7 +24,7 @@ function DonationCtrl($scope, $http, $modalInstance, $modal, $timeout, Donation)
 
   $scope.closeModal = function(){
     $modalInstance.close();    
-  }
+  };
 
   $scope.getData = function(name, amount) {
     Donation.setDonor(name, amount);

@@ -1,4 +1,4 @@
-function UserController($http, $modal, user, Donation, $modal) {
+function UserController($http, $modal, user, Donation) {
 
   this.user = user;
 
@@ -50,7 +50,7 @@ function UserController($http, $modal, user, Donation, $modal) {
   this.checkAuth();
 
 }
-UserController.$inject = ['$http','$modal', 'user','Donation', '$modal'];
+UserController.$inject = ['$http','$modal', 'user','Donation'];
 
 angular
   .module('pathleteApp.controllers.user', [])
