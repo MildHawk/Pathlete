@@ -125,6 +125,10 @@ router.get('/api/user/:userId', function(req, res) {
   });
 });
 
+router.get('/api/getCurrentUser', function(req, res) {
+  res.json(req.user);
+});
+
 // router.get('/donations');
 
 /**
