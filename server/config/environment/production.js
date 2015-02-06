@@ -13,11 +13,8 @@ module.exports = {
             process.env.PORT ||
             3000,
 
-  // MongoDB connection options
-  mongo: {
-    uri:    process.env.MONGOLAB_URI ||
-            process.env.MONGOHQ_URL ||
-            process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
-            'mongodb://localhost/archivr'
+  // Firebase
+  firebase: {
+    uri:    'https://pathlete-prod.firebaseio.com/'
   }
 };
