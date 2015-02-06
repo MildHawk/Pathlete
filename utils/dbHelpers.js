@@ -20,6 +20,7 @@ module.exports = {
       user.strideRunning = profile._json.user.strideLengthRunning;
       user.strideWalking = profile._json.user.strideLengthWalking;
       user.units = profile._json.user.distanceUnit;
+      user.image = profile._json.user.avatar150;
 
       //if user is not already in the db
       if (data.val() === null) {
