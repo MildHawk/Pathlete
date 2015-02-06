@@ -10,7 +10,6 @@ function ChallengeFormCtrl($http, Challenges) {
   // Handle selection of a challenge
   this.selectChallenge = function(index) {
     this.selection = index;
-    console.log(this.selection);
   };
 
   this.isSelected = function(index) {
@@ -20,12 +19,21 @@ function ChallengeFormCtrl($http, Challenges) {
   // Handle form submission
   this.handleSubmit = function() {
     // Add challenge selection to form
-    _this.formInfo.selection = _this.selection;
+    _this.formInfo.challengeName = Challenges.challenges[_this.selection].name;
+    _this.formInfo.challengeDescription =
+      Challenges.challenges[_this.selection].description;
 
-    // TODO: Validate some stuff
+    _this.formInfo.raised = 0;
 
-    // TODO: connect to server
-    console.log('Submitting form:', _this.formInfo);
+    // TODO: Validate form
+
+    $http.post('/api/challenge', _this.formInfo)
+      .success(function() {
+        $http.get('/api/getCurrentUser')
+          .success(function(data) {
+            window.location = '/user/' + data.id;
+          });
+      });
 
   };
 }

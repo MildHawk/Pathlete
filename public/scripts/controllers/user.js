@@ -45,7 +45,7 @@ function UserController($http, $modal, user, Donation) {
     var _this = this;
     $http.get('/authorized/' + user.id)
       .success(function(result) {
-        _this.isAuthorized = result.data;
+        _this.isAuthorized = result;
       });
   };
 
