@@ -96,7 +96,7 @@ module.exports = {
         if(err) return cb(err, null);
         cb(null, true);
       });
-    }
+    })
         // TODO: error handling
         // TODO: maybe? Send back updated user db model
         // db.child('users').child(userID).once('value', function(data) {

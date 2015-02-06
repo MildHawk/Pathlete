@@ -57,7 +57,9 @@ var jsFiles = [
 
 // Keep track of own JS files for linting
 var jsFilesForLint = [
-  paths.src.js + '/**/*.js',
+  paths.src.js + '/controllers/**/*.js',
+  paths.src.js + '/app.js',
+  paths.src.js + '/services.js',
   paths.server + '/**/*.js',
   paths.spec + '/**/*.js'
 ];
