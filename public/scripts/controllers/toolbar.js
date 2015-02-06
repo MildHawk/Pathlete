@@ -8,9 +8,16 @@ function ToolbarCtrl($scope, $http, $location, Tool) {
   $scope.$on('state.update', function(thing, update){
     $scope.showing = update.state;
   });
-}
 
-ToolbarCtrl.$inject = ['$scope', '$http', 'Info', 'Tool'];
+  $scope.getUserPage = function() {
+    $http.get('/api/getCurrentUser').then(function(res) {
+      if (res.data) {
+        $location.url('/user/' + res.data.id);
+      }
+    });
+  };
+}
+ToolbarCtrl.$inject = ['$scope', '$http', '$location', 'Tool'];
 
 angular
   .module('pathleteApp.ToolbarCtrl', [
