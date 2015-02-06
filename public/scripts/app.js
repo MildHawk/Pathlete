@@ -11,6 +11,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
       resolve: {
         // inject the user into state via resolve
         user: ['$http', '$stateParams', function($http, $stateParams) {
+          
           // TODO: Make api end point to return users
           // return $http.get('/api/user/' + $stateParams.userId).then(function(response) {
           //   // return user data
@@ -18,6 +19,7 @@ function config($stateProvider, $locationProvider, $urlRouterProvider) {
           // }).catch(function(err) {
           //   // user doesn't exist?
           // });
+    
           return {
             _id: '1241421414124',
             username: 'RickWuebker',

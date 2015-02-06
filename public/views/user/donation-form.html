@@ -65,12 +65,12 @@
 -->
 <div ng-controller="DonationCtrl">
 <form stripe-form="stripeCallback"> 
-  <input ng-model="name" type="text" placeholder="Name" />
-  <input ng-model="amount" type="text" placeholder="Amount" />
-  <input ng-model="number" placeholder="Card Number" payment-format="card" payments-validate="card" /> 
-  <input ng-model="expiry" placeholder="Expiration" payment-format="expiry" payments-validate="expiry" /> 
-  <input ng-model="cvc" placeholder="CVC" payment-format="cvc" payments-validate="cvc" /> 
-  <button type="submit" ng-click="getData(name, amount)">Submit</button> 
+  <input ng-model="name" class="form-control" type="text" placeholder="Name" />
+  <input ng-model="amount" class="form-control" type="text" placeholder="Amount" />
+  <input ng-model="number" class="form-control" placeholder="Card Number" payment-format="card" payments-validate="card" /> 
+  <input ng-model="expiry" class="form-control" placeholder="Expiration" payment-format="expiry" payments-validate="expiry" /> 
+  <input ng-model="cvc" class="form-control" placeholder="CVC" payment-format="cvc" payments-validate="cvc" /> 
+  <button type="submit" class="btn btn-success btn-lg" ng-click="getData(name, amount)">Submit</button> 
 </form>
 </div>
 
