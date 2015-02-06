@@ -4,10 +4,6 @@ function Info($http) {
     return $http({
       method: 'GET',
       url: '/userdata'
-    })
-    .then(function (resp) {
-      return resp.data;
-
     });
   };
 
@@ -49,7 +45,7 @@ function Tool($rootScope) {
 
 Tool.$inject = ['$rootScope'];
 
-function Donation($http, $stateParams) {
+function Donation($http, $stateParams, $modal) {
 
   var donor = {};
 
@@ -70,11 +66,11 @@ function Donation($http, $stateParams) {
       url: '/donations',
       data: { stripeToken: token, name: donor.name, amount: donor.amount, userId: $stateParams.userId }
     })
-    .then(function (resp) {
-      return resp.data;
+    .then(function (resp) {    
+      return resp;
     })
     .catch(function(err) {
-      console.log('error on POST request', err);
+      return err;
     });
   };
 
@@ -85,7 +81,7 @@ function Donation($http, $stateParams) {
   };
 }
 
-Donation.$inject = ['$http', '$stateParams'];
+Donation.$inject = ['$http', '$stateParams', '$modal'];
 
 function Challenges() {
   var challenges = [

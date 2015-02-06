@@ -1,5 +1,7 @@
-function UserController($http, $modal, user) {
+function UserController($http, $modal, user, Donation) {
+
   this.user = user;
+
   this.isEditing = false;
   
   function getGoalPercent(goal, raised) {
@@ -20,9 +22,9 @@ function UserController($http, $modal, user) {
 
   this.donate = function() {
     // trigger donate modal
-    var modal = $modal.open({
+    var modal2 = $modal.open({
       templateUrl: '/views/user/donation-form.html',
-      controller: function(){}, // TODO: hook in real modal controller
+      controller: 'DonationCtrl',
       size: 'md'
     });
   };
@@ -48,7 +50,7 @@ function UserController($http, $modal, user) {
   this.checkAuth();
 
 }
-UserController.$inject = ['$http', '$modal', 'user'];
+UserController.$inject = ['$http','$modal', 'user','Donation'];
 
 angular
   .module('pathleteApp.controllers.user', [])
