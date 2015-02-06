@@ -14,7 +14,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(obj, done) {
-  // console.log('deserializeUser:', obj);
+  console.log('deserializeUser:', obj);
   done(null, obj);
 });
 
@@ -56,6 +56,22 @@ router.post('/donations', function(req, res) {
     if(err) return res.status(500).end()
     res.status(201).end("charge successful");
   });
+});
+
+/**
+ * GET /authorized
+ * ================
+ * Client sends the user profile ID it is currently viewing. Server checks if
+ * session user matches the profile; if so, client is authorized to special
+ * privileges (e.g. edit profile, add challenge). This was done to get around
+ * the lack of JWTs.
+ */
+router.get('/authorized/:profileId', function(req, res) {
+  if (req.user.id === req.params.profileId) {
+    return res.status(200).json(true);
+  } else {
+    return res.status(401).json(false);
+  }
 });
 
 // router.get('/donations');
