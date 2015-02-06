@@ -4,6 +4,8 @@ function UserController($http, $modal, user, Donation) {
 
   this.isEditing = false;
   
+  console.log('data', this.user);
+  
   function getGoalPercent(goal, raised) {
     /**
      * converts amount raised into percent string

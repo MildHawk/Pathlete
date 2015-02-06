@@ -64,6 +64,24 @@ module.exports = {
       });
   },
 
+  getUser: function(userId, callback) {
+    db.child('users').child(userId).once('value', function(data) {
+      callback(data.val());
+    });
+  },
+
+  updateUser: function(userId, userData, callback) {
+    db.child('users').child(userId).once('value', function(data) {
+      var props = data.val();
+      userData = JSON.parse(userData);
+      if(props){
+        db.child('users').child(userId).update(userData, function(err) {
+          callback(err, userData);
+        });
+      }
+    });
+  },
+
   addDonation: function (token, name, amount, cb) {
     // Set your secret key: remember to change this to your live secret key in production
     // See your keys here https://dashboard.stripe.com/account

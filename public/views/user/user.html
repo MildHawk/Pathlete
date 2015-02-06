@@ -3,20 +3,15 @@
     <img src="/images/rick.jpg" class="user-profile-image" />
     <div class="profile-header">
       <h2>
-        {{ UserCtrl.user.username }}
+        {{ UserCtrl.user.name }}
       </h2>
       <span class="glyphicon glyphicon-cog"
         ng-click="UserCtrl.editProfile()"
         ng-show="UserCtrl.isAuthorized"></span>
     </div>
     <ul class="list-unstyled text-left" ng-hide="UserCtrl.isEditing">
-      <li>
-        <span class="">Location: </span>
-        {{ UserCtrl.user.location.city }}, {{ UserCtrl.user.location.state }}
-      </li>
-      <li>
-        <span class="">Age: </span> {{ UserCtrl.user.age }}
-      </li>
+      <li>Stride Walking: {{ UserCtrl.user.strideWalking }}</li>
+      <li>Stride Running: {{ UserCtrl.user.strideRunning }}</li>
     </ul>
     <form>
       <ul class="list-unstyled text-left" ng-show="UserCtrl.isEditing">
