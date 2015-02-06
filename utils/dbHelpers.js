@@ -100,6 +100,9 @@ module.exports = {
         console.log("card declined");
         cb(err, null);
         return;
+      }else if(err){
+        console.log("amount issue");
+        return cb(err,null);
       }
       cb(null, charge);
     });
