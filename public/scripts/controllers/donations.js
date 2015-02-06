@@ -29,6 +29,7 @@ function DonationCtrl($scope, $http, $modalInstance, $modal, $timeout, Donation)
   };
 
   $scope.getData = function(name, amount) {
+    amount = amount * 100;
     Donation.setDonor(name, amount);
   };
 }
