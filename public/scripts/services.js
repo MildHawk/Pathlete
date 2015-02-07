@@ -66,11 +66,11 @@ function Donation($http, $stateParams, $modal) {
       url: '/donations',
       data: { stripeToken: token, name: donor.name, amount: donor.amount, userId: $stateParams.userId }
     })
-    .then(function (resp) {    
-      return resp;
+    .success(function (resp) {    
+      return 'success';
     })
     .catch(function(err) {
-      return err;
+      return 'error';
     });
   };
 

@@ -81,11 +81,16 @@ router.post('/donations', function(req, res) {
   var userId = req.body.userId;
   console.log('inside /donations on server');
   dbHelper.addDonation(token, name, amount, function(err, charge) {
-    if(err) return res.status(500).end();
-    dbHelper.increaseAmount(userId, charge.amount, function(err, isSuccessful) {
-      if(err) return res.status(500).end();
-      res.status(201).end('charge successful');
-    });
+    if( err ) {
+      console.log('inside error on server and here is err', err);
+      return res.sendStatus(500);
+    } else {
+      console.log('INside the next else block...');
+      dbHelper.increaseAmount(userId, charge.amount, function(err, isSuccessful) {
+        if(err) return res.status(500).end();
+        res.status(201).end('charge successful');
+      });
+    }
   });
 });
 
