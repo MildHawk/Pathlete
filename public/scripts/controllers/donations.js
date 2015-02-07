@@ -41,7 +41,7 @@ function DonationCtrl($scope, $http, $modalInstance, $modal, $timeout, Donation)
           $timeout(function () {
             modalCardError.close('closing');
           }, 2000);
-          
+          $scope.loading = false;          
         }
       });
 
