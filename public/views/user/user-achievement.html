@@ -18,8 +18,8 @@
             <h4>Fund Raising</h4>
             <ul class="list-unstyled">
               <li>Charity: {{ UserCtrl.user.challenge.charity }}</li>
-              <li>Raised: {{ UserCtrl.user.challenge.raised }}</li>
-              <li>Goal: {{ UserCtrl.user.challenge.goal }}</li>
+              <li>Raised: {{ UserCtrl.user.challenge.raised / 100 | currency }}</li>
+              <li>Goal: {{ UserCtrl.user.challenge.goal | currency }}</li>
               <li>{{ UserCtrl.user.challenge.completed }} of the way to the goal!</li>
             </ul>
           </div>

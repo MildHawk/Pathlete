@@ -10,8 +10,8 @@
         ng-show="UserCtrl.isAuthorized"></span>
     </div>
     <ul class="list-unstyled text-left" ng-hide="UserCtrl.isEditing">
-      <li>Stride Walking: {{ UserCtrl.user.strideWalking }}</li>
-      <li>Stride Running: {{ UserCtrl.user.strideRunning }}</li>
+      <li>Stride Walking: {{ UserCtrl.Math.round(UserCtrl.user.strideWalking) }}</li>
+      <li>Stride Running: {{ UserCtrl.Math.round(UserCtrl.user.strideRunning) }}</li>
     </ul>
     <form>
       <ul class="list-unstyled text-left" ng-show="UserCtrl.isEditing">

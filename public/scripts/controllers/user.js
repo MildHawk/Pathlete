@@ -1,4 +1,5 @@
 function UserController($http, $modal, user, Donation, Challenges) {
+  this.Math = window.Math;
 
   this.user = user;
   this.isEditing = false;
@@ -9,7 +10,8 @@ function UserController($http, $modal, user, Donation, Challenges) {
      * and adds to user challenge object.
      */
     goal = parseInt(goal, 10);
-    raised = parseInt(raised, 10);
+    // raised stored in cents, convert to dollars
+    raised = parseInt(raised, 10) / 100;
     
     var completed = (raised/goal) * 100;
 
