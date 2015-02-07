@@ -11,12 +11,8 @@ function UserController($http, $modal, user, Donation, Challenges) {
     goal = parseInt(goal, 10);
     raised = parseInt(raised, 10);
     
-    var completed = raised/goal;
-    
-    if(raised >= goal) {
-      var completed = completed * 100;
-    }
-    
+    var completed = (raised/goal) * 100;
+
     return completed + '%';
   }
 
