@@ -56,21 +56,16 @@ var all = {
   // Should we populate the DB with sample data?
   seedDB: false,
 
-  // MongoDB connection options
-  // mongo: {
-  //   options: {
-  //     db: {
-  //       safe: true
-  //     }
-  //   }
-  // },
-
   // Fitbit API
   fitbit: {
     consumerKey: nconf.get('CONSUMER_KEY'),
     consumerSecret: nconf.get('CONSUMER_SECRET')
   },
 
+  //Stripe API
+  stripe: {
+    apiKey: nconf.get('STRIPE_KEY')
+  },
   // // Social API keys
   // facebook: {
   //   clientID:     nconf.get('FACEBOOK_ID') || 'id',

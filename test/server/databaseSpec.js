@@ -1,3 +1,5 @@
+/*jshint -W079 */
+
 var expect = require('chai').expect;
 var db = require('../../utils/db.js');
 var helpers = require('../../utils/dbHelpers.js');
@@ -21,6 +23,7 @@ describe('tests the dbHelper functions', function (){
   user._json.user.strideLengthRunning = 2;
   user._json.user.strideLengthWalking = 1;
   user._json.user.distanceUnit = 'en_US';
+  user._json.user.image = 'http://www.fitbit.com/images/profile/defaultProfile_150_male.gif';
   user.id = '123456';
   var testToken = 'abcdefg';
   var testSecret = 'MEOWMEOWMEOW';

@@ -32,11 +32,11 @@ body {
 }
 
 /* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
+// @media (min-width: 768px) {
+//   .container {
+//     max-width: 730px;
+//   }
+// }
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -122,30 +122,62 @@ h5 {
  width: 30%;
 }
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-  .row{
-    width:1000px;
-  }
-  .row p{
-    font-size: 10px;
-  }
+// @media screen and (min-width: 768px) {
+//   /* Remove the padding we set earlier */
+//   .header,
+//   .marketing,
+//   .footer {
+//     padding-left: 0;
+//     padding-right: 0;
+//   }
+//   /* Space out the masthead */
+//   .header {
+//     margin-bottom: 30px;
+//   }
+//   /* Remove the bottom border on the jumbotron for visual effect */
+//   .jumbotron {
+//     border-bottom: 0;
+//   }
+//   .row p{
+//     font-size: 10px;
+//   }
 
-}
+// }
 .achievement p{
   font-size: 12px;
+}
+
+main {
+  padding-top:2em;
+}
+
+img {
+  max-width:100%;
+}
+
+// user
+.user-profile-image {
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  border-radius:50%;
+  // width:328px;
+  // height:328px;
+}
+
+.profile-header {
+  display: -webkit-box;
+  span.glyphicon-cog {
+    float:left; 
+    position:relative;
+    margin:20px;
+  }
+}
+
+div.selected {
+  border: 3px solid green;
+}
+
+// landing page
+.jumbotron img {
+  max-width: 400px;
 }
