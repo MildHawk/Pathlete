@@ -14,7 +14,7 @@ function UserController($http, $modal, user, Donation, Challenges) {
     var completed = raised/goal;
     
     if(raised >= goal) {
-      var completed =  completed * 100;
+      var completed = completed * 100;
     }
     
     return completed + '%';
