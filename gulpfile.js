@@ -64,6 +64,7 @@ var jsFilesForLint = [
   paths.spec + '/**/*.js'
 ];
 
+
 // Tracks if running from `gulp test`. If so, have JSHint error out.
 var runningTests = false;
 
@@ -131,10 +132,19 @@ gulp.task('compass', function() {
 var envConfig;
 
 var envConfigDevelopment = {
+  BASE_HREF: 'localhost:3000'
 };
 
 var envConfigProduction = {
+  BASE_HREF: 'pathlete.herokuapp.com'
 };
+
+gulp.task('processEnv', function() {
+  gulp.src('./server/views/index_template.ejs')
+    .pipe(preprocess({context: envConfig}))
+    .pipe(concat('index.ejs'))
+    .pipe(gulp.dest('./server/views'));
+});
 
 /******************************************************************************
  * Testing suite
@@ -247,15 +257,15 @@ gulp.task('build', function() {
  * base href into the Jade partials.
  */
 gulp.task('build-development', function() {
-  // envConfig = envConfigDevelopment;
+  envConfig = envConfigDevelopment;
   // gulp.start('compass', 'image', 'moveViews', 'lint', 'javascript');
-  gulp.start('compass', 'moveViews', 'lint', 'javascript');
+  gulp.start('compass', 'moveViews', 'lint', 'javascript', 'processEnv');
 });
 
 gulp.task('build-production', function() {
-  // envConfig = envConfigProduction;
+  envConfig = envConfigProduction;
   // gulp.start('compass', 'image', 'moveViews', 'lint', 'javascript');
-  gulp.start('compass', 'moveViews', 'lint', 'javascript');
+  gulp.start('compass', 'moveViews', 'lint', 'javascript', 'processEnv');
 });
 
 gulp.task('default', ['build-development', 'watch']);
