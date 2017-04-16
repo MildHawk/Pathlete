@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/MildHawk/Pathlete.png?label=ready&title=Ready)](https://waffle.io/MildHawk/Pathlete)
 # Pathlete
 
 Issues: [![Stories in Ready](https://badge.waffle.io/MildHawk/Pathlete.png?label=ready&title=Ready)](https://waffle.io/MildHawk/Pathlete) 
